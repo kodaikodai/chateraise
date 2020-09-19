@@ -84,15 +84,16 @@ a.notice-link:hover{
   padding: 18px 35px;
 }
 
+.notice-content .date{
+  white-space: nowrap;
+}
+
 .notice-content p{
   margin: initial;
-  white-space: nowrap;
 }
 
 p.notice-title{
   margin-left: 50px;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .notice-btn{
@@ -193,11 +194,32 @@ footer,.info{
     margin: 0 5px 15px !important;
   }
 
+  .notice-contents, .category-frame {
+    padding: 0px;
+  }
+
+  .notice-content {
+    display: block;
+    padding: 15px 40px;
+  }
+
+  p.notice-title {
+    margin: 3px 0px 0px 0px;
+  }
+
+
 }
 
 
 /* -------------------- スマホ小 ~576px -------------------- */
 @media screen and (max-width: 576px) {
 
+  .notice-content {
+    padding: 15px 25px;
+}
+
+  .notice-content p{
+    font-size: 14px;
+  }
 
 }

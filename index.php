@@ -48,7 +48,7 @@
                 <a href="<?php the_permalink(); ?>" class="notice-link">
                   <article class="article-loop">
                     <div class="notice-content">
-                      <p><?php the_time('Y年m月d日'); ?></p>
+                      <p class='date'><?php the_time('Y年m月d日'); ?></p>
                       <p class="notice-title"><?php the_title(); ?></p>
                     </div>
                   </article>
