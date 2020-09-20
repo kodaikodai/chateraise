@@ -5,32 +5,11 @@ Version: 1.0
 Description: test
 */
 
-* {
-  box-sizing: border-box;
-}
-
-body {
-  min-height: 100vh;
-  position: relative;
-  padding-top: 88px;/*←headerの高さ*/
-  padding-bottom: 40px;/*←footerの高さ*/
-}
 
 footer{
   width: 100%;
   position: absolute;
   bottom: 0;
-}
-
-.navbar{
-  background-color: #551937;
-}
-.nav-link{
-  color: white !important;
-}
-.cart_logo{
-  position: absolute;
-  right: 404px;
 }
 
 .top_slide{
@@ -118,10 +97,10 @@ p.notice-title{
 }
 
 .category-card{
-  width: 300px;
-	height: 350px;
+  width: calc(33.33333% - 40px);
+	height: auto;
 	vertical-align: top;
-	margin: 10px 8px;
+	margin: 20px 20px;
 	box-shadow: 0px 2px 4px #aaa;
 	display: inline-block;
 }
@@ -173,6 +152,11 @@ footer,.info{
   margin: initial;
 }
 
+
+p {
+  margin: initial;
+}
+
 /* -------------------- タブレット md ~992px -------------------- */
 @media screen and (max-width: 992px) {
   .cart_logo{
@@ -185,17 +169,25 @@ footer,.info{
     max-width: 100vw;
   }
 
+  .category-frame {
+    padding: 0px 20px;
+}
+
 }
 
 /* -------------------- スマホ sm ~768px -------------------- */
 @media screen and (max-width: 768px) {
 
-  .card{
-    margin: 0 5px 15px !important;
+  body {
+    padding-top: 70px;/*←headerの高さ*/
   }
 
-  .notice-contents, .category-frame {
+  .notice-contents {
     padding: 0px;
+  }
+
+  .category-frame {
+    padding: 0px 10px;
   }
 
   .notice-content {
@@ -203,16 +195,25 @@ footer,.info{
     padding: 15px 40px;
   }
 
+  .category-card {
+    width: calc(50% - 10px);
+    height: auto;
+    margin: 10px 5px;
+  }
+
   p.notice-title {
     margin: 3px 0px 0px 0px;
   }
-
 
 }
 
 
 /* -------------------- スマホ小 ~576px -------------------- */
 @media screen and (max-width: 576px) {
+
+  body {
+    padding-top: 50px;/*←headerの高さ*/
+  }
 
   .notice-content {
     padding: 15px 25px;
@@ -221,5 +222,25 @@ footer,.info{
   .notice-content p{
     font-size: 14px;
   }
+
+  .notice-btn {
+    padding: 30px 0 52px;
+}
+
+  .notice h2, .category h2 {
+    padding: 42px 0 20px;
+}
+
+.category-frame {
+  padding: 0px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+.category-name p{
+  font-size: 14px;
+}
 
 }

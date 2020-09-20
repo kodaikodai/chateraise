@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+  padding-top: 88px;/*←headerの高さ*/
+  padding-bottom: 24px;/*←footerの高さ*/
+}
+
+.navbar{
+  background-color: #551937;
+}
+.nav-link{
+  color: white !important;
+}
+.cart_logo{
+  position: absolute;
+  right: 404px;
+}
+
+/* -------------------- タブレット md ~992px -------------------- */
+@media screen and (max-width: 992px) {
+
+
+}
+
+/* -------------------- スマホ sm ~768px -------------------- */
+@media screen and (max-width: 768px) {
+
+  .navbar{
+    padding: 20px !important;
+  }
+
+}
+
+
+/* -------------------- スマホ小 ~576px -------------------- */
+@media screen and (max-width: 576px) {
+
+  .navbar{
+    padding: 5px 15px !important;
+  }
+}

@@ -86,14 +86,14 @@
           $categories = get_categories( $args );
           foreach( $categories as $category ){
             echo '
-            <a href="' . get_category_link( $category->term_id ) . '">
               <div class="category-card">
-                <img src="' .get_stylesheet_directory_uri(). '/images/category.jpg" alt="">
-                <div class="category-name">
-                  <p>' . $category->name . '</p>
-                </div>
-              </div>
-            </a>';
+                <a href="' . get_category_link( $category->term_id ) . '">
+                  <img src="' .get_stylesheet_directory_uri(). '/images/category.jpg" alt="">
+                  <div class="category-name">
+                    <p>' . $category->name . '</p>
+                  </div>
+                </a>
+              </div>';
           }
         ?>
       </div>
