@@ -23,11 +23,11 @@ $(function(){
 });
 
 
+// カテゴリー表示
 $(function(){
   let $frame = $('.category-frame'),
   emptyCells = [],
   i;
-// 子パネル (li.cell) の数だけ空の子パネル (li.cell.is-empty) を追加する。
 for (i = 0; i < $frame.find('.category-card').length; i++) {
   emptyCells.push($('<div>', { class: 'category-card is-empty' }));
 }
@@ -35,3 +35,13 @@ $frame.append(emptyCells);
 });
 
 
+// カテゴリー商品表示
+$(function(){
+  let $item_frame = $('.item_frame'),
+  emptyCells = [],
+  i;
+for (i = 0; i < $item_frame.find('.item').length; i++) {
+  emptyCells.push($('<div>', { class: 'item is-empty' }));
+}
+$item_frame.append(emptyCells);
+});

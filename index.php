@@ -102,10 +102,5 @@
       <h2>店舗情報</h2>
     </div>
     <?php get_footer(); ?>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="<?php echo get_template_directory_uri(); ?>/js/jquery-3.5.1.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.bundle.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/js/style.js"></script>
   </body>
 </html>

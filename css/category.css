@@ -1,0 +1,109 @@
+.items_wrap h1 {
+  text-align: center;
+  color: #551937;
+  margin: 50px;
+}
+
+.item_frame{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.item{
+  width: calc(33.33333% - 10px);
+	height: auto;
+	vertical-align: top;
+	margin: 0px 5px;
+  display: inline-block;
+  border-top: 1px solid #ede9ea;
+  border-bottom: 1px solid #ede9ea;
+  margin-bottom: -1px;
+}
+
+
+.item.is-empty{
+  border: initial;
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.item:hover{
+  opacity: 0.7;
+  background-color: #f2ecef;
+}
+
+.item a{
+  text-decoration: none;
+  display: flex;
+}
+
+.item_name {
+  color: #6e6e6e;
+  padding: 10px 0px 10px 10px;
+}
+
+.item_name p{
+  font-size: 14px;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+
+/* -------------------- タブレット md ~992px -------------------- */
+@media screen and (max-width: 992px) {
+
+.item{
+  width: calc(50% - 10px);
+}
+
+}
+
+/* -------------------- スマホ sm ~768px -------------------- */
+@media screen and (max-width: 768px) {
+
+.items_wrap h1{
+  font-size: 34px;
+  margin: 20px;
+}
+
+.item{
+  width: 100%;
+  position: relative;
+}
+
+.arrow{
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  display: block;
+  content: '';
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  border-top: 1px solid #888;
+  border-right: 1px solid #888;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.item_name {
+  padding: 2% 4% 2% 2%;
+}
+
+}
+
+
+/* -------------------- スマホ小 ~576px -------------------- */
+@media screen and (max-width: 576px) {
+
+.items_wrap h1{
+  font-size: 26px;
+}
+
+}

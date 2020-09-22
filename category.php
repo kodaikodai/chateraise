@@ -10,21 +10,24 @@ $args = array(
 );
 $posts = get_posts( $args ); ?>
 
+<div class="items_wrap">
+  <h1><?php echo $cat_name; ?></h1>
+  <div class="item_frame">
+    <?php foreach ( $posts as $post ): setup_postdata( $post ); ?>
+      <div class="item">
+        <a href="<?php the_permalink(); ?>">
+          <div class="item_img"><?php the_post_thumbnail('thumbnail'); ?></div>
+          <div class="item_name">
+            <p><?php the_title(); ?></p>
+            <p>100円（税込110円）</p>
+          </div>
+          <span class="arrow"></span>
+        </a>
+      </div>
+    <?php endforeach; wp_reset_postdata(); ?>
+  </div>
 
-<h1><?php echo $cat_name; ?></h1>
-
-<?php foreach ( $posts as $post ): // ループの開始
-setup_postdata( $post ); // 記事データの取得
-?>
-
-<div>
-  <p class="textP"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a><br><span class="postDate"><?php echo get_the_date( $format, $post ); ?></span><span class="writeName"><?php the_author(); ?></span></p>
-  <p class="imgP"><a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a></p>
 </div>
 
-
-
-<?php endforeach; // ループの終了
-wp_reset_postdata(); // 直前のクエリを復元する
-?>
 <?php get_footer(); ?>
+

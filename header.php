@@ -8,7 +8,13 @@
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/header.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/single-notice.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/category.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="<?php echo get_template_directory_uri(); ?>/js/jquery-3.5.1.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.bundle.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/style.js"></script>
     <?php if( is_user_logged_in() ) : ?>
       <style>
         nav {
