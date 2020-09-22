@@ -19,7 +19,11 @@ $posts = get_posts( $args ); ?>
           <div class="item_img"><?php the_post_thumbnail('thumbnail'); ?></div>
           <div class="item_name">
             <p><?php the_title(); ?></p>
-            <p>100円（税込110円）</p>
+            <p>
+              <?php if(get_post_meta($post->ID, 'item_price', true)): ?>
+                <?php echo get_post_meta($post->ID, 'item_price', true);?>円（税込 <?php echo get_post_meta($post->ID, 'item_price', true) * 1.1;?>円）
+              <?php endif;?>
+            </p>
           </div>
           <span class="arrow"></span>
         </a>
