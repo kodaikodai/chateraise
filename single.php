@@ -1,24 +1,24 @@
 <?php get_header(); ?>
-<main class="wrap">
-  <section class="content-area content-full-width">
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-      <article class="article-full">
-        <header>
-          <h2><?php the_title(); ?></h2>
-          <h2><?php echo get_post_meta($post->ID, 'item_price', true); ?></h2>
-          <h2><?php echo get_post_meta($post->ID, 'item_allergies', true); ?></h2>
-          <h2><?php echo get_post_meta($post->ID, 'item_thumbnail', true); ?></h2>
-        </header>
-        <?php the_content(); ?>
-        <?php the_post_thumbnail('medium' ); ?>
-ご注文フォーム
-
-      </article>
-<?php endwhile; else : ?>
-      <article>
-        <p>Sorry, no post was found!</p>
-      </article>
-<?php endif; ?>
-  </section>
-</main>
+<div class="item_wrap">
+  <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+    <div class='item_wrap_img'>
+      <?php the_post_thumbnail('large'); ?>
+    </div>
+    <div class='item_wrap_innner'>
+      <h1>
+        <?php the_title(); ?>
+      </h1>
+      <div>
+        <p>
+          <?php if(get_post_meta($post->ID, 'item_price', true)): ?>
+            <?php echo get_post_meta($post->ID, 'item_price', true);?>円（税込 <?php echo get_post_meta($post->ID, 'item_price', true) * 1.1;?>円）
+          <?php endif;?>
+        </p>
+        <p class='sentence'><?php the_content(); ?></p>
+        <p>アレルギー：<?php echo get_post_meta($post->ID, 'item_allergies', true); ?></p>
+      ご注文フォーム
+      </div>
+    </div>
+  <?php endwhile; endif; ?>
+</div>
 <?php get_footer(); ?>

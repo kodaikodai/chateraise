@@ -15,6 +15,11 @@
   margin-top: 40px;
 }
 
+.notice_text img{
+  width: 100%;
+  height: auto;
+}
+
 img.aligncenter {
   display: block;
   margin: 0 auto;

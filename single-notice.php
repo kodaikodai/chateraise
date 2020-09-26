@@ -9,7 +9,6 @@
         <?php the_content(); ?>
       </p>
     </div>
-    
   <?php endwhile; endif; ?>
 </div>
 <?php get_footer(); ?>

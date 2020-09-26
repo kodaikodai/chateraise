@@ -127,6 +127,7 @@ p.notice-title{
   text-align: center;
   line-height: 50px;
   color: #551937;
+  margin: initial;
 }
 
 
@@ -148,10 +149,6 @@ footer,.info{
   margin: initial;
 }
 
-
-p {
-  margin: initial;
-}
 
 /* -------------------- タブレット md ~992px -------------------- */
 @media screen and (max-width: 992px) {

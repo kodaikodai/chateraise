@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/header.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/single-notice.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/category.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/single.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
