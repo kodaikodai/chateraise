@@ -167,3 +167,11 @@ function save_item_fields( $post_id ) {
 
 }
 add_action('save_post', 'save_item_fields');
+
+//SESSION 開始
+function init_session_start(){
+  if(!session_id()) {
+    session_start();
+  }
+}
+add_action('init', 'init_session_start');

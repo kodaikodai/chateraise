@@ -31,7 +31,7 @@
         <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo('name'); ?></a>
         <ul class="navbar-nav ml-auto cart_logo">
           <li class="nav-item">
-            <a href="" class="nav-link">カート</a>
+            <a href="<?php echo get_page_link(2215)?>" class="nav-link">カート</a>
           </li>
         </ul>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#a">

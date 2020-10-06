@@ -16,9 +16,25 @@
         </p>
         <p class='sentence'><?php the_content(); ?></p>
         <p>アレルギー：<?php echo get_post_meta($post->ID, 'item_allergies', true); ?></p>
-      ご注文フォーム
+        <form action="<?php echo get_page_link(2215)?>" method="post">
+          <div>
+            <span>数量</span>
+            <input type="number" value="1"  min="1" name="num">
+          </div>
+          <div>
+            <input type="hidden" name="item_id" value="<?php echo get_the_ID()?>">
+            <input type="submit" value="カートに入れる">
+          </div>
+        </form>
       </div>
     </div>
   <?php endwhile; endif; ?>
 </div>
 <?php get_footer(); ?>
+<?php
+    $cart=array();
+    if(isset($_SESSION['cart'])){
+      $cart=$_SESSION['cart'];
+    }
+    var_dump($cart);
+?>

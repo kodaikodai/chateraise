@@ -1,4 +1,4 @@
-    <?php get_header(); ?>
+    <?php get_header(); var_dump($_SESSION);?>
     <!-- トップページ画像 -->
     <div class='container top_slide'>
       <div id="foo" class="carousel slide" data-ride="carousel">
