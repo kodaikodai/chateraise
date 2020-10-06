@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/category.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/single.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="<?php echo get_template_directory_uri(); ?>/js/jquery-3.5.1.js"></script>
@@ -31,7 +32,7 @@
         <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo('name'); ?></a>
         <ul class="navbar-nav ml-auto cart_logo">
           <li class="nav-item">
-            <a href="<?php echo get_page_link(2215)?>" class="nav-link">カート</a>
+            <a href="<?php echo get_page_link(2215)?>" class="nav-link"><i class="fas fa-shopping-cart"></i></a>
           </li>
         </ul>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#a">
