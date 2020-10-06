@@ -1,13 +1,13 @@
 <?php get_header(); ?>
 <?php
 //POSTデータをカート用のセッションに保存
-var_dump($_POST['kind']);
+var_dump($_POST['action']);
 if($_SERVER['REQUEST_METHOD']==='POST'){
     $item=$_POST['item_id'];
     $num=$_POST['num'];
-    $kind=$_POST['kind'];
+    $action=$_POST['action'];
     $_SESSION['cart'][$item]=$num; //セッションにデータを格納
-  if($kind==='delete'){
+  if($action==='delete'){
     unset($_SESSION['cart'][$item]);
   }
 }
@@ -29,14 +29,14 @@ var_dump($_SESSION);
     </div>
     <div>
       <span>数量</span>
-      <input type="hidden" name="kind" value="change">
+      <input type="hidden" name="action" value="change">
       <input type="hidden" name="item_id" value="<?php echo $key;?>">
       <input type="number" name="num" value="<?php echo $val;?>"  min="1" >
       <input type="submit" value="変更">
     </div>
   </form>
   <form action="" method="POST">
-    <input type="hidden" name="kind" value="delete">
+    <input type="hidden" name="action" value="delete">
     <input type="hidden" name="item_id" value="<?php echo $key;?>">
     <input type="submit" value="削除">
   </form>
