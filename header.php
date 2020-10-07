@@ -32,7 +32,16 @@
         <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo('name'); ?></a>
         <ul class="navbar-nav ml-auto cart_logo">
           <li class="nav-item">
-            <a href="<?php echo get_page_link(2215)?>" class="nav-link"><i class="fas fa-shopping-cart"></i></a>
+            <a href="<?php echo get_page_link(2215)?>" class="nav-link">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="text-danger bg-light cart_count">
+                <?php if(isset($_SESSION['cart'])):?>
+                  <?php echo array_sum($_SESSION['cart']);?>
+                <?php else: ?>
+                  <?php echo 0;?>
+                <?php endif; ?>
+              </span>
+            </a>
           </li>
         </ul>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#a">

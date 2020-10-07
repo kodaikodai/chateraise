@@ -1,4 +1,3 @@
-<?php get_header(); ?>
 <?php
 //POSTデータをカート用のセッションに保存
 var_dump($_POST['action']);
@@ -18,6 +17,7 @@ if(isset($_SESSION['cart'])){
 var_dump($cart);
 var_dump($_SESSION);
 ?>
+<?php get_header(); ?>
 <h1>カートの中身</h1>
 <?php if(empty($cart)):?>
 中身はありません。
