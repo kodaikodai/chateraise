@@ -35,10 +35,14 @@
             <a href="<?php echo get_page_link(2215)?>" class="nav-link">
               <i class="fas fa-shopping-cart"></i>
               <span class="text-danger bg-light cart_count">
-                <?php if(isset($_SESSION['cart'])):?>
-                  <?php echo array_sum($_SESSION['cart']);?>
+                <?php $count = 0;
+                if(isset($_SESSION['cart'])):?>
+                    <?php foreach($_SESSION['cart'] as $key=>$val): ?>
+                        <?php $count += $val['num']; ?>
+                    <?php endforeach; ?>
+                  <?php echo $count;?>
                 <?php else: ?>
-                  <?php echo 0;?>
+                  <?php echo $count;?>
                 <?php endif; ?>
               </span>
             </a>
