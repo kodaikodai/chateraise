@@ -1,11 +1,14 @@
 <?php
 //POSTデータをカート用のセッションに保存
 var_dump($_POST['action']);
+var_dump($_POST['price']);
+
 if($_SERVER['REQUEST_METHOD']==='POST'){
     $item=$_POST['item_id'];
     $num=$_POST['num'];
+    $price=$_POST['price'];
     $action=$_POST['action'];
-    $_SESSION['cart'][$item]=$num; //セッションにデータを格納
+    $_SESSION['cart'][$item]=['num'=>$num,'price'=>$price]; //セッションにデータを格納
   if($action==='delete'){
     unset($_SESSION['cart'][$item]);
   }
@@ -18,7 +21,7 @@ var_dump($cart);
 var_dump($_SESSION);
 ?>
 <?php get_header(); ?>
-<h1>カートの中身</h1>
+<h1>現在のカートの中身</h1>
 <?php if(empty($cart)):?>
 中身はありません。
 <?php else: ?>

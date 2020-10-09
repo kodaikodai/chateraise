@@ -23,6 +23,7 @@
           </div>
           <div>
             <input type="hidden" name="item_id" value="<?php echo get_the_ID()?>">
+            <input type="hidden" name="price" value="<?php echo get_post_meta($post->ID, 'item_price', true);?>">
             <input type="submit" value="カートに入れる">
           </div>
         </form>
