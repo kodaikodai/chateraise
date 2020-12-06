@@ -1,4 +1,4 @@
-    <?php get_header(); var_dump($_SESSION);?>
+    <?php get_header();?>
     <!-- トップページ画像 -->
     <div class='container top_slide'>
       <div id="foo" class="carousel slide" data-ride="carousel">
@@ -60,7 +60,7 @@
         </ul>
       </div>
       <div class="notice-btn">
-        <button type="button" class="btn btn-outline-info more">もっと見る</button>
+        <button type="button" class="btn btn-outline-original more">もっと見る</button>
       </div>
     </div>
 

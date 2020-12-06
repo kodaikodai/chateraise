@@ -1,8 +1,5 @@
 <?php
 //POSTデータをカート用のセッションに保存
-var_dump($_POST['action']);
-var_dump($_POST['price']);
-
 if($_SERVER['REQUEST_METHOD']==='POST'){
     $item=$_POST['item_id'];
     $num=$_POST['num'];
@@ -17,32 +14,65 @@ $cart=array();
 if(isset($_SESSION['cart'])){
   $cart=$_SESSION['cart'];
 }
-var_dump($cart);
-var_dump($_SESSION);
 ?>
 <?php get_header(); ?>
-<h1>現在のカートの中身</h1>
-<?php if(empty($cart)):?>
-中身はありません。
-<?php else: ?>
-<?php foreach($cart as $key=>$val): ?>
-  <form action="" method="post">
-    <div>
-      <?php echo get_the_title($key);?>
+<div class="cart">
+  <div class="cart_title">
+    <h1>現在のカートの中身</h1>
+  </div>
+  <div class="cart_frame">
+    <?php if(empty($cart)):?>
+    中身はありません。
+    <?php else: foreach($cart as $key=>$val):?>
+    <div class="cart_items">
+      <hr>
+        <form action="" method="post">
+          <div>
+            <?php echo get_the_post_thumbnail( $key ); ?>
+          </div>
+          <div>
+            <p>商品名：<?php echo get_the_title($key);?></p>
+          </div>
+          <div>
+            <p>単価：<?php echo $val['price']* 1.08;?>円</p>
+            <input type="hidden" name="price" value="<?php echo $val['price'];?>">
+          </div>
+          <div>
+            <span>数量：</span>
+            <input type="hidden" name="action" value="change">
+            <input type="hidden" name="item_id" value="<?php echo $key;?>">
+            <input type="number" name="num" value="<?php echo $val['num'];?>"  min="1" >
+            <input type="submit" value="変更">
+          </div>
+          <div>
+            <p>小計：<?php echo $val['price'] * $val['num'] * 1.08;?>円</p>
+          </div>
+        </form>
+        <form action="" method="POST">
+          <input type="hidden" name="action" value="delete">
+          <input type="hidden" name="item_id" value="<?php echo $key;?>">
+          <input type="submit" value="削除">
+        </form>
+      <?php $total_price += $val['price'] * $val['num']* 1.08;
+      endforeach;?>
+      <hr>
     </div>
-    <div>
-      <span>数量</span>
-      <input type="hidden" name="action" value="change">
-      <input type="hidden" name="item_id" value="<?php echo $key;?>">
-      <input type="number" name="num" value="<?php echo $val;?>"  min="1" >
-      <input type="submit" value="変更">
+    <div class="detail">
+      <div class="detail_container">
+        <div>
+          <div class="detail_total">
+            <span>合計</span>
+            <span><?php echo $total_price;?>円</span>
+          </div>
+          <div class="detail_link">
+            <div class="detail_link_buy"><button type="button" class="btn btn-outline-original">購入手続きへ</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="link_shop"><button type="button" class="btn btn-outline-original">お買い物を続ける</button></div>
     </div>
-  </form>
-  <form action="" method="POST">
-    <input type="hidden" name="action" value="delete">
-    <input type="hidden" name="item_id" value="<?php echo $key;?>">
-    <input type="submit" value="削除">
-  </form>
-<?php endforeach; ?>
-<?php endif; ?>
+    
+    <?php endif; ?>
+  </div>
+</div>
 <?php get_footer(); ?>
