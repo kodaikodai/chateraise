@@ -18,8 +18,25 @@
   padding-right: 30px;
 }
 
+.cart_item{
+  display: flex;
+}
+
+.cart_info{
+  padding-left: 20px;
+}
+
+.cart_item img{
+  width: 100%;
+    height: auto;
+}
+
 .detail{
   width: 33.3333%;
+}
+
+.detail .btn{
+  padding: 10px 0px;
 }
 
 .detail_container{
@@ -29,9 +46,7 @@
 
 .detail .btn{
   width: 100%;
-  padding: 10px 100px;
 }
-
 
 .detail_total{
   border-bottom: solid 1px #551937;
@@ -45,4 +60,68 @@
 
 .link_shop{
   padding: 30px;
+}
+
+/* -------------------- タブレット md ~992px -------------------- */
+@media screen and (max-width: 992px) {
+
+
+}
+
+/* -------------------- スマホ sm ~768px -------------------- */
+@media screen and (max-width: 768px) {
+
+
+  .cart_frame{
+    display: block;
+  }
+
+  .cart_info p,.cart_info span,.cart_info input{
+    font-size: 14px;
+  }
+
+  .cart_title h1{
+    text-align: center;
+  }
+
+  .cart_title h1{
+    font-size: 1.8rem;
+  }
+
+  .cart_items{
+    width: 100%;
+    padding-right: 0px;
+  }
+
+  .detail{
+    width: 100%;
+  }
+}
+
+
+/* -------------------- スマホ小 ~576px -------------------- */
+@media screen and (max-width: 576px) {
+
+  .cart_frame, .cart_title{
+    padding: 0 20px;
+  }
+
+  .cart_title {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .cart_item .image{
+    width: 35%;
+  }
+
+  .cart_info{
+    width: 65%;
+  }
+
+  .detail_total{
+    font-size: 18px;
+    margin: 0 0 40px;
+  }
+
 }

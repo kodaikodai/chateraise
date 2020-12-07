@@ -23,36 +23,41 @@ if(isset($_SESSION['cart'])){
   <div class="cart_frame">
     <?php if(empty($cart)):?>
     中身はありません。
-    <?php else: foreach($cart as $key=>$val):?>
+    <?php else:?>
     <div class="cart_items">
+      <?php foreach($cart as $key=>$val):?>
       <hr>
-        <form action="" method="post">
-          <div>
-            <?php echo get_the_post_thumbnail( $key ); ?>
-          </div>
+      <div class="cart_item">
+        <div class="image">
+          <?php echo get_the_post_thumbnail( $key ); ?>
+        </div>
+        <div class="cart_info">
           <div>
             <p>商品名：<?php echo get_the_title($key);?></p>
           </div>
-          <div>
-            <p>単価：<?php echo $val['price']* 1.08;?>円</p>
-            <input type="hidden" name="price" value="<?php echo $val['price'];?>">
-          </div>
-          <div>
-            <span>数量：</span>
-            <input type="hidden" name="action" value="change">
+          <form action="" method="POST">
+            <div>
+              <p>単価：<?php echo $val['price']* 1.08;?>円</p>
+              <input type="hidden" name="price" value="<?php echo $val['price'];?>">
+            </div>
+            <div>
+              <span>数量：</span>
+              <input type="hidden" name="action" value="change">
+              <input type="hidden" name="item_id" value="<?php echo $key;?>">
+              <input type="number" name="num" value="<?php echo $val['num'];?>"  min="1" >
+              <input type="submit" value="変更">
+            </div>
+            <div>
+              <p>小計：<?php echo $val['price'] * $val['num'] * 1.08;?>円</p>
+            </div>
+          </form>
+          <form action="" method="POST">
+            <input type="hidden" name="action" value="delete">
             <input type="hidden" name="item_id" value="<?php echo $key;?>">
-            <input type="number" name="num" value="<?php echo $val['num'];?>"  min="1" >
-            <input type="submit" value="変更">
-          </div>
-          <div>
-            <p>小計：<?php echo $val['price'] * $val['num'] * 1.08;?>円</p>
-          </div>
-        </form>
-        <form action="" method="POST">
-          <input type="hidden" name="action" value="delete">
-          <input type="hidden" name="item_id" value="<?php echo $key;?>">
-          <input type="submit" value="削除">
-        </form>
+            <input type="submit" value="削除">
+          </form>
+        </div>
+      </div>
       <?php $total_price += $val['price'] * $val['num']* 1.08;
       endforeach;?>
       <hr>
@@ -62,7 +67,7 @@ if(isset($_SESSION['cart'])){
         <div>
           <div class="detail_total">
             <span>合計</span>
-            <span><?php echo $total_price;?>円</span>
+            <span><?php echo number_format($total_price);?>円</span>
           </div>
           <div class="detail_link">
             <div class="detail_link_buy"><button type="button" class="btn btn-outline-original">購入手続きへ</button></div>
@@ -71,7 +76,6 @@ if(isset($_SESSION['cart'])){
       </div>
       <div class="link_shop"><button type="button" class="btn btn-outline-original">お買い物を続ける</button></div>
     </div>
-    
     <?php endif; ?>
   </div>
 </div>
