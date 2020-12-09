@@ -22,7 +22,7 @@ if(isset($_SESSION['cart'])){
   </div>
   <div class="cart_frame">
     <?php if(empty($cart)):?>
-    中身はありません。
+    <div class="none-item"><p>中身はございません</p></div>
     <?php else:?>
     <div class="cart_items">
       <?php foreach($cart as $key=>$val):?>

@@ -13,6 +13,13 @@
   display: flex;
 }
 
+.none-item {
+  width: 100%;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 50px;
+}
+
 .cart_items{
   width: 66.6666%;
   padding-right: 30px;
