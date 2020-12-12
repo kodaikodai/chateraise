@@ -15,10 +15,6 @@ body {
 .nav-link{
   color: white !important;
 }
-.cart_logo{
-  position: absolute;
-  right: 404px;
-}
 
 .cart_count{
   text-align: center;
@@ -28,7 +24,6 @@ body {
 
 /* -------------------- タブレット md ~992px -------------------- */
 @media screen and (max-width: 992px) {
-
 
 }
 

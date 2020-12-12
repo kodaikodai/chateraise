@@ -29,9 +29,9 @@
   </head>
   <body <?php body_class(); ?>>
     <header>
-      <nav class="navbar navbar-dark navbar-expand-lg shadow p-4 fixed-top">
+      <nav class="navbar navbar-dark navbar-expand shadow p-4 fixed-top">
         <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo('name'); ?></a>
-        <ul class="navbar-nav ml-auto cart_logo">
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a href="<?php echo get_page_link(2215)?>" class="nav-link">
               <i class="fas fa-shopping-cart"></i>
@@ -48,26 +48,10 @@
               </span>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="" class="nav-link pr-4">商品検索</a>
+          </li>
         </ul>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#a">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="a">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a href="" class="nav-link">お知らせ</a>
-            </li>
-            <li class="nav-item">
-              <a href="" class="nav-link">オンライン注文</a>
-            </li>
-            <li class="nav-item">
-              <a href="" class="nav-link">店舗情報</a>
-            </li>
-            <li class="nav-item">
-              <a href="" class="nav-link pr-4">商品検索</a>
-            </li>
-          </ul>
-        </div>
       </nav>
     </header>
   <!-- <?php wp_nav_menu( array( 'header-menu' => 'header-menu' ) ); ?> -->

@@ -152,10 +152,6 @@ footer,.info{
 
 /* -------------------- タブレット md ~992px -------------------- */
 @media screen and (max-width: 992px) {
-  .cart_logo{
-    position: initial;
-    padding-right: 30px;
-  }
 
   .top_slide{
     padding: initial;
