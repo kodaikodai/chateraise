@@ -329,3 +329,19 @@ function my_admin_scripts() {
   wp_enqueue_media();
 }
 add_action( 'admin_print_scripts', 'my_admin_scripts' );
+
+// 【管理画面】新規カテゴリー追加画面に画像カラム追加
+function custom_column_header( $columns ){
+  $columns['image'] = '画像';
+  return $columns;
+}
+add_filter( "manage_edit-category_columns", 'custom_column_header', 10);
+
+function custom_column_content( $value, $column_name, $term_id){
+  if ($column_name === 'image') {
+  $term_icon = get_term_meta( $term_id, 'category-image', true );
+  if( $term_icon )
+      echo '<img src="' . $term_icon . '" style="width:100px;height:auto;">';
+  }
+}
+add_action( "manage_category_custom_column", 'custom_column_content', 10, 3);
