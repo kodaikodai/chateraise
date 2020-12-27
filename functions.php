@@ -221,7 +221,7 @@ function my_category_add_form_fields( $taxonomy ) {
                   /* テキストフォームに画像の URL を表示 */
                   $("input:text[name=category-image]").val(file.attributes.sizes.full.url);
                   /* プレビュー用に選択されたサムネイル画像を表示 */
-                  $("#image_thumbnail").append('<img src="'+file.attributes.sizes.full.url+'" />');
+                  $("#image_thumbnail").append('<img src="'+file.attributes.sizes.full.url+'" style="width:50%;height:auto;"/>');
               });
           });
           custom_uploader.open();
@@ -250,7 +250,7 @@ function my_category_edit_form_fields( $tag, $taxonomy ) {
       <input type="button" name="image_clear" value="クリア" />
       <div id="image_thumbnail" class="uploded-thumbnail">
         <?php if (get_term_meta( $tag->term_id, 'category-image', true )): ?>
-          <img src="<?php echo esc_url_raw( get_term_meta( $tag->term_id, 'category-image', true ) ); ?>" alt="選択中の画像">
+          <img src="<?php echo esc_url_raw( get_term_meta( $tag->term_id, 'category-image', true ) ); ?>" alt="選択中の画像" style="width:50%;height:auto;">
         <?php endif ?>
       </div>
     </td>
@@ -287,7 +287,7 @@ function my_category_edit_form_fields( $tag, $taxonomy ) {
                   /* テキストフォームに画像の URL を表示 */
                   $("input:text[name=category-image]").val(file.attributes.sizes.full.url);
                   /* プレビュー用に選択されたサムネイル画像を表示 */
-                  $("#image_thumbnail").append('<img src="'+file.attributes.sizes.full.url+'" />');
+                  $("#image_thumbnail").append('<img src="'+file.attributes.sizes.full.url+'" style="width:50%;height:auto;"/>');
               });
           });
           custom_uploader.open();
