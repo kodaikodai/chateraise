@@ -175,3 +175,157 @@ function init_session_start(){
   }
 }
 add_action('init', 'init_session_start');
+
+// カテゴリー一覧ページの新規追加エリアに要素を追加するフック
+add_action( 'category_add_form_fields', 'my_category_add_form_fields' );
+function my_category_add_form_fields( $taxonomy ) {
+  ?>
+  <div class="form-field form-required term-image-wrap">
+    <label for="category-image">画像(URL)</label>
+    <input name="category-image" id="category-image" type="text" value="" size="40" aria-required="true"/>
+    <p>サムネイル用の画像を設定します。</p>
+    <input type="button" name="image_select" value="選択" />
+    <input type="button" name="image_clear" value="クリア" />
+    <div id="image_thumbnail" class="uploded-thumbnail">
+    </div>
+  </div>
+  <script type="text/javascript">
+  (function ($) {
+      var custom_uploader;
+      // ①選択ボタンを押した時の処理↓
+      $("input:button[name=image_select]").click(function(e) {
+          e.preventDefault();
+          if (custom_uploader) {
+              custom_uploader.open();
+              return;
+          }
+          custom_uploader = wp.media({
+              title: "画像を選択してください",
+              /* ライブラリの一覧は画像のみにする */
+              library: {
+                  type: "image"
+              },
+              button: {
+                  text: "画像の選択"
+              },
+              /* 選択できる画像は 1 つだけにする */
+              multiple: false
+          });
+          custom_uploader.on("select", function() {
+              var images = custom_uploader.state().get("selection");
+              /* file の中に選択された画像の各種情報が入っている */
+              images.each(function(file){
+                  /* テキストフォームと表示されたサムネイル画像があればクリア */
+                  $("input:text[name=category-image]").val("");
+                  $("#image_thumbnail").empty();
+                  /* テキストフォームに画像の URL を表示 */
+                  $("input:text[name=category-image]").val(file.attributes.sizes.full.url);
+                  /* プレビュー用に選択されたサムネイル画像を表示 */
+                  $("#image_thumbnail").append('<img src="'+file.attributes.sizes.full.url+'" />');
+              });
+          });
+          custom_uploader.open();
+      });
+      /* ②クリアボタンを押した時の処理 */
+      $("input:button[name=image_clear]").click(function() {
+          $("input:text[name=category-image]").val("");
+          $("#image_thumbnail").empty();
+      });
+  })(jQuery);
+  </script>
+  <?php
+}
+
+
+// カテゴリー編集画面に要素を追加するフック
+add_action( 'category_edit_form_fields', 'my_category_edit_form_fields', 10, 2 );
+function my_category_edit_form_fields( $tag, $taxonomy ) {
+  ?>
+  <tr class="form-field term-image-wrap">
+    <th scope="row"><label for="category-image">画像(URL)</label></th>
+    <td>
+      <input name="category-image" id="category-image" type="text" value="<?php echo esc_url_raw( get_term_meta( $tag->term_id, 'category-image', true ) ); ?>" size="40" aria-required="true"/>
+      <p>サムネイル用の画像を設定します。</p>
+      <input type="button" name="image_select" value="選択" />
+      <input type="button" name="image_clear" value="クリア" />
+      <div id="image_thumbnail" class="uploded-thumbnail">
+        <?php if (get_term_meta( $tag->term_id, 'category-image', true )): ?>
+          <img src="<?php echo esc_url_raw( get_term_meta( $tag->term_id, 'category-image', true ) ); ?>" alt="選択中の画像">
+        <?php endif ?>
+      </div>
+    </td>
+  </tr>
+  <script type="text/javascript">
+  (function ($) {
+      var custom_uploader;
+      // ①選択ボタンを押した時の処理↓
+      $("input:button[name=image_select]").click(function(e) {
+          e.preventDefault();
+          if (custom_uploader) {
+              custom_uploader.open();
+              return;
+          }
+          custom_uploader = wp.media({
+              title: "画像を選択してください",
+              /* ライブラリの一覧は画像のみにする */
+              library: {
+                  type: "image"
+              },
+              button: {
+                  text: "画像の選択"
+              },
+              /* 選択できる画像は 1 つだけにする */
+              multiple: false
+          });
+          custom_uploader.on("select", function() {
+              var images = custom_uploader.state().get("selection");
+              /* file の中に選択された画像の各種情報が入っている */
+              images.each(function(file){
+                  /* テキストフォームと表示されたサムネイル画像があればクリア */
+                  $("input:text[name=category-image]").val("");
+                  $("#image_thumbnail").empty();
+                  /* テキストフォームに画像の URL を表示 */
+                  $("input:text[name=category-image]").val(file.attributes.sizes.full.url);
+                  /* プレビュー用に選択されたサムネイル画像を表示 */
+                  $("#image_thumbnail").append('<img src="'+file.attributes.sizes.full.url+'" />');
+              });
+          });
+          custom_uploader.open();
+      });
+      /* ②クリアボタンを押した時の処理 */
+      $("input:button[name=image_clear]").click(function() {
+          $("input:text[name=category-image]").val("");
+          $("#image_thumbnail").empty();
+      });
+  })(jQuery);
+  </script>
+  <?php
+}
+
+function my_edit_category( $term_id ) {
+  $key = 'category-image';
+  /**
+   * 入力された値の検証をして、更新 or 削除
+   */
+  if ( isset( $_POST[ $key ] ) && esc_url_raw( $_POST[ $key ] ) ) {
+    update_term_meta( $term_id, $key, $_POST[ $key ] );
+  } else {
+    delete_term_meta( $term_id, $key );
+  }
+}
+add_action( 'create_category', 'my_edit_category' );
+add_action( 'edit_category', 'my_edit_category' );
+
+$term = get_queried_object();
+if ( $term ) {
+    /**
+     *  get_term_metaで取得
+     */
+    $meta = get_term_meta( $term->term_id, 'category-image', true );
+}
+
+function my_admin_scripts() {
+  //メディアアップローダの javascript API
+  wp_enqueue_media();
+}
+add_action( 'admin_print_scripts', 'my_admin_scripts' );
