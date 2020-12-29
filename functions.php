@@ -183,7 +183,7 @@ function my_category_add_form_fields( $taxonomy ) {
   <div class="form-field form-required term-image-wrap">
     <label for="category-image">画像(URL)</label>
     <input name="category-image" id="category-image" type="text" value="" size="40" aria-required="true"/>
-    <p>サムネイル用の画像を設定します。</p>
+    <p>サムネイル用の画像を設定します。※写真は縦横比1:1になるようにしてください</p>
     <input type="button" name="image_select" value="選択" />
     <input type="button" name="image_clear" value="クリア" />
     <div id="image_thumbnail" class="uploded-thumbnail">
@@ -245,7 +245,7 @@ function my_category_edit_form_fields( $tag, $taxonomy ) {
     <th scope="row"><label for="category-image">画像(URL)</label></th>
     <td>
       <input name="category-image" id="category-image" type="text" value="<?php echo esc_url_raw( get_term_meta( $tag->term_id, 'category-image', true ) ); ?>" size="40" aria-required="true"/>
-      <p>サムネイル用の画像を設定します。</p>
+      <p>サムネイル用の画像を設定します。※写真は縦横比1:1になるようにしてください</p>
       <input type="button" name="image_select" value="選択" />
       <input type="button" name="image_clear" value="クリア" />
       <div id="image_thumbnail" class="uploded-thumbnail">
@@ -302,7 +302,9 @@ function my_category_edit_form_fields( $tag, $taxonomy ) {
   <?php
 }
 
-function my_edit_category( $term_id ) {
+// カテゴリーの新規追加画面で「カテゴリー追加」ボタンが押された際のバックエンド側の処理
+// ボタンを押した際に画像を消したい
+function my_edit_category_create( $term_id ) {
   $key = 'category-image';
   /**
    * 入力された値の検証をして、更新 or 削除
@@ -313,16 +315,21 @@ function my_edit_category( $term_id ) {
     delete_term_meta( $term_id, $key );
   }
 }
-add_action( 'create_category', 'my_edit_category' );
-add_action( 'edit_category', 'my_edit_category' );
+add_action( 'create_category', 'my_edit_category_create' );
 
-$term = get_queried_object();
-if ( $term ) {
-    /**
-     *  get_term_metaで取得
-     */
-    $meta = get_term_meta( $term->term_id, 'category-image', true );
+// カテゴリーの編集画面で更新された際のバックエンド側の処理
+function my_edit_category_edit( $term_id ) {
+  $key = 'category-image';
+  /**
+   * 入力された値の検証をして、更新 or 削除
+   */
+  if ( isset( $_POST[ $key ] ) && esc_url_raw( $_POST[ $key ] ) ) {
+    update_term_meta( $term_id, $key, $_POST[ $key ] );
+  } else {
+    delete_term_meta( $term_id, $key );
+  }
 }
+add_action( 'edit_category', 'my_edit_category_edit' );
 
 function my_admin_scripts() {
   //メディアアップローダの javascript API
@@ -345,3 +352,12 @@ function custom_column_content( $value, $column_name, $term_id){
   }
 }
 add_action( "manage_category_custom_column", 'custom_column_content', 10, 3);
+
+// これいらないかも
+$term = get_queried_object();
+if ( $term ) {
+    /**
+     *  get_term_metaで取得
+     */
+    $meta = get_term_meta( $term->term_id, 'category-image', true );
+}

@@ -85,10 +85,11 @@
           );
           $categories = get_categories( $args );
           foreach( $categories as $category ){
+            $category_image = get_term_meta( $category->term_id, 'category-image', true );
             echo '
               <div class="category-card">
                 <a href="' . get_category_link( $category->term_id ) . '">
-                  <img src="' .get_stylesheet_directory_uri(). '/images/category.jpg" alt="">
+                  <img src="' .$category_image. '" alt="">
                   <div class="category-name">
                     <p>' . $category->name . '</p>
                   </div>
