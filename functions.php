@@ -116,7 +116,7 @@ add_action( 'manage_posts_custom_column', 'customize_manage_posts_custom_column'
 
 
 
-// ------- カスタムフィールド作成 -------------
+// ------- 新規投稿画面にカスタムフィールド作成 -------------
 function add_item_fields() {
 	//add_meta_box(表示される入力ボックスのHTMLのID, ラベル, 表示する内容を作成する関数名, 投稿タイプ, 表示方法)
 	//第4引数のpostをpageに変更すれば固定ページにオリジナルカスタムフィールドが表示されます(custom_post_typeのslugを指定することも可能)。
@@ -127,20 +127,11 @@ add_action('admin_menu', 'add_item_fields');
 
 // カスタムフィールドの入力エリア
 function insert_item_fields() {
-	global $post;
- 
-	//下記に管理画面に表示される入力エリアを作ります。「get_post_meta()」は現在入力されている値を表示するための記述です。
+  global $post;
+
+	//【管理画面】新規投稿画面に表示される入力エリアを作ります。「get_post_meta()」は現在入力されている値を表示するための記述です。
 	echo '税抜き価格（半角数字）： <input type="text" name="item_price" value="'.get_post_meta($post->ID, 'item_price', true).'" size="10" />円<br>';
   echo 'アレルギー表示： <input type="text" name="item_allergies" value="'.get_post_meta($post->ID, 'item_allergies', true).'" size="50" placeholder="例 : 小麦、卵"/><br>';
-  
-  echo '画像： <input type="file" name="item_thumbnail" accept="image/*" value="'.get_post_meta($post->ID, 'item_thumbnail', true).'"/><br>';
-  $item_thumbnail = get_post_meta($post->ID,'item_thumbnail',true);
-  var_dump($item_thumbnail);
-    if(isset($item_thumbnail) && strlen($item_thumbnail) > 0){
-        //hoge_thumbnailキーのpostmeta情報がある場合は、画像を表示
-        //$hoge_thumbnailには、後述するattach_idが格納されているので、wp_get_attachment_url関数にそのattach_idを渡して画像のURLを取得する
-        echo '<img style="width: 200px;display: block;margin: 1em;" src="'.wp_get_attachment_url($item_thumbnail).'">';
-    }
 
 }
  
