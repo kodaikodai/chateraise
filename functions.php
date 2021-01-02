@@ -352,12 +352,3 @@ function custom_column_content( $value, $column_name, $term_id){
   }
 }
 add_action( "manage_category_custom_column", 'custom_column_content', 10, 3);
-
-// これいらないかも
-$term = get_queried_object();
-if ( $term ) {
-    /**
-     *  get_term_metaで取得
-     */
-    $meta = get_term_meta( $term->term_id, 'category-image', true );
-}
