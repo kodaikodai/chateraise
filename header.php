@@ -49,7 +49,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link pr-4">商品検索</a>
+            <a href="<?php echo get_page_link(2235)?>" class="nav-link pr-4">商品検索</a>
           </li>
         </ul>
       </nav>
