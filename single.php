@@ -32,9 +32,3 @@
   <?php endwhile; endif; ?>
 </div>
 <?php get_footer(); ?>
-<?php
-    $cart=array();
-    if(isset($_SESSION['cart'])){
-      $cart=$_SESSION['cart'];
-    }
-?>
