@@ -1,12 +1,12 @@
 <?php
-//POSTデータをカート用のセッションに保存
+//ページにアクセスする際に使用されたリクエストのメソッドがPOSTの時
 if($_SERVER['REQUEST_METHOD']==='POST'){
     $item=$_POST['item_id'];
     $num=$_POST['num'];
     $price=$_POST['price'];
-    $action=$_POST['action'];
-    $_SESSION['cart'][$item]=['num'=>$num,'price'=>$price]; //セッションにデータを格納
-  if($action==='delete'){
+    $_SESSION['cart'][$item]=['num'=>$num,'price'=>$price];//POSTデータをカート用のセッションに保存
+  if($_POST['action']==='delete'){
+    // 削除
     unset($_SESSION['cart'][$item]);
   }
 }
