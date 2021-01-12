@@ -60,7 +60,7 @@
         </ul>
       </div>
       <div class="notice-btn">
-        <button type="button" class="btn btn-outline-original more">もっと見る</button>
+        <button type="button" class="btn btn-outline-original more" onfocus="this.blur();">もっと見る</button>
       </div>
     </div>
 

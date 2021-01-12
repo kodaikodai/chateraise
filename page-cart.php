@@ -70,11 +70,11 @@ if(isset($_SESSION['cart'])){
             <span><?php echo number_format($total_price);?>円</span>
           </div>
           <div class="detail_link">
-            <div class="detail_link_buy"><button type="button" class="btn btn-outline-original">購入手続きへ</button></div>
+            <div class="detail_link_buy"><button type="button" class="btn btn-outline-original" onfocus="this.blur();">購入手続きへ</button></div>
           </div>
         </div>
       </div>
-      <div class="link_shop"><button type="button" class="btn btn-outline-original">お買い物を続ける</button></div>
+      <div class="link_shop"><button type="button" class="btn btn-outline-original" onfocus="this.blur();">お買い物を続ける</button></div>
     </div>
     <?php endif; ?>
   </div>
