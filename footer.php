@@ -1,5 +1,5 @@
-    <footer style="margin-top: auto;">
-      <p style="text-align:center; color:#fff;">Copyright &copy; 2020</p>
+    <footer>
+      <p>Copyright &copy; 2021 Chateraise Ofuna & Chigasaki, All Rights Reserved.</p>
     </footer>
     <?php wp_footer(); ?>
   </body>

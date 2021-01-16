@@ -7,9 +7,17 @@ Description: test
 
 
 footer{
+  height: 50px;
+  background-color: #551937;
   width: 100%;
   position: absolute;
   bottom: 0;
+}
+
+footer p{
+  line-height: 50px;
+  text-align:center;
+  color:#fff;
 }
 
 .top_slide{
@@ -138,17 +146,33 @@ p.notice-title{
 
 
 
-footer,.info{
-  background-color: #551937;
+.info{
+  background-color:#f2ecef;
 }
 
 .info h2{
   padding: 72px 0 50px;
   text-align: center;
-  color: #fff;
   margin: initial;
 }
 
+.a{
+  display:flex;
+  padding: 0 50px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.b{
+  width:500px;
+  height:500px;
+  background-color:red;
+}
+
+.c{
+  width:100%-500px;
+  background-color:green;
+}
 
 /* -------------------- タブレット md ~992px -------------------- */
 @media screen and (max-width: 992px) {

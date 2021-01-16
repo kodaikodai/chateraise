@@ -101,6 +101,10 @@
     </div>
     <div class="info">
       <h2>店舗情報</h2>
+      <div class="a">
+        <div class="b"></div>
+        <div class="c"></div>
+      </div>
     </div>
     <?php get_footer(); ?>
   </body>
