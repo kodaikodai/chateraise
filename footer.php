@@ -1,5 +1,5 @@
     <footer>
-      <p>Copyright &copy; 2021 Chateraise Ofuna & Chigasaki, All Rights Reserved.</p>
+      <small>&copy; 2021 Chateraise Ofuna & Chigasaki.</small>
     </footer>
     <?php wp_footer(); ?>
   </body>

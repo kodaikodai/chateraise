@@ -30,6 +30,11 @@ body {
 /* -------------------- スマホ sm ~768px -------------------- */
 @media screen and (max-width: 768px) {
 
+  body {
+    padding-top: 80px;/*←headerの高さ*/
+    padding-bottom: 50px;/*←footerの高さ*/
+  }
+
   .navbar{
     padding: 20px !important;
   }
@@ -40,7 +45,11 @@ body {
 /* -------------------- スマホ小 ~576px -------------------- */
 @media screen and (max-width: 576px) {
 
+  body {
+    padding-top: 60px;/*←headerの高さ*/
+  }
+
   .navbar{
-    padding: 5px 15px !important;
+    padding: 10px 15px !important;
   }
 }

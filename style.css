@@ -12,11 +12,11 @@ footer{
   width: 100%;
   position: absolute;
   bottom: 0;
+  text-align:center;
 }
 
-footer p{
+footer small{
   line-height: 50px;
-  text-align:center;
   color:#fff;
 }
 
@@ -88,6 +88,14 @@ p.notice-title{
   padding: 50px 0 72px;
 }
 
+.map-btn{
+  padding: 50px 0 72px;
+}
+
+.map-btn .btn{
+  padding: 10px 80px;
+}
+
 .notice-btn .btn{
   padding: 10px 100px;
 }
@@ -148,6 +156,7 @@ p.notice-title{
 
 .info{
   background-color:#f2ecef;
+  padding-bottom: 80px;
 }
 
 .info h2{
@@ -156,22 +165,48 @@ p.notice-title{
   margin: initial;
 }
 
-.a{
+.info_container{
   display:flex;
   padding: 0 50px;
   max-width: 1300px;
   margin: 0 auto;
 }
 
-.b{
-  width:500px;
-  height:500px;
-  background-color:red;
+.info_map{
+  width:50%;
 }
 
-.c{
-  width:100%-500px;
-  background-color:green;
+iframe{
+  width: 100%;
+  height: 400px;
+}
+
+.info_text{
+  width: 50%;
+}
+
+.info_text_innner {
+  width: 90%;
+  margin-left: auto;
+}
+
+.info_text .info_text_innner table{
+  width: 100%;
+}
+
+.info_text .info_text_innner table tbody tr{
+  border-bottom: 1px solid #fff;
+}
+
+.info_text .info_text_innner table tbody tr th{
+  font-weight: normal;
+  width: 94px;
+  padding: 18px 0 18px 0;
+  vertical-align: top;
+}
+
+.info_text .info_text_innner table tbody tr td{
+  padding: 18px 0 18px 0;
 }
 
 /* -------------------- タブレット md ~992px -------------------- */
@@ -183,7 +218,7 @@ p.notice-title{
   }
 
   .category-frame {
-    padding: 0px 20px;
+    padding: 0px 20px 80px;
 }
 
 }
@@ -191,16 +226,13 @@ p.notice-title{
 /* -------------------- スマホ sm ~768px -------------------- */
 @media screen and (max-width: 768px) {
 
-  body {
-    padding-top: 70px;/*←headerの高さ*/
-  }
 
   .notice-contents {
     padding: 0px;
   }
 
   .category-frame {
-    padding: 0px 10px;
+    padding: 0px 10px 50px;
   }
 
   .notice-content {
@@ -218,15 +250,47 @@ p.notice-title{
     margin: 3px 0px 0px 0px;
   }
 
+  .info{
+    padding-bottom: 40px;
+  }
+
+  .info h2{
+    padding: 40px 0 30px;
+  }
+
+  .info_container{
+    display:block;
+    padding: 0px;
+  }
+
+  .info_map{
+    width:100%;
+  }
+  
+  .info_text{
+    width: 100%;
+  }
+
+  .info_text_innner {
+    width: 100%;
+    padding: 0px 20px 0px 20px;
+  }
+
+  .map-btn{
+    padding: 30px 0 20px;
+    text-align: center;
+  }
+
+  .map-btn .btn{
+    padding: 10px 80px;
+  }
+
 }
 
 
 /* -------------------- スマホ小 ~576px -------------------- */
 @media screen and (max-width: 576px) {
 
-  body {
-    padding-top: 50px;/*←headerの高さ*/
-  }
 
   .notice-content {
     padding: 15px 25px;
@@ -236,7 +300,7 @@ p.notice-title{
     font-size: 14px;
   }
 
-  .notice-btn {
+  .notice-btn, .map-btn{
     padding: 30px 0 52px;
 }
 
@@ -245,7 +309,7 @@ p.notice-title{
 }
 
 .category-frame {
-  padding: 0px;
+  padding: 0px 0px 30px;
 }
 
 h2 {
@@ -256,4 +320,22 @@ h2 {
   font-size: 14px;
 }
 
+tbody{
+  font-size: 14px;
 }
+
+.info{
+  padding-bottom: 20px;
+}
+
+.map-btn{
+  padding: 30px 0 20px;
+  text-align: center;
+}
+
+.map-btn .btn{
+  padding: 8px 50px;
+}
+
+}
+

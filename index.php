@@ -65,7 +65,7 @@
     </div>
 
     <!-- 商品カテゴリー -->
-    <div class="category">
+    <div class="category" id="shopping">
       <h2>オンライン注文</h2>
       <div class="category-frame">
         <?php
@@ -101,9 +101,39 @@
     </div>
     <div class="info">
       <h2>店舗情報</h2>
-      <div class="a">
-        <div class="b"></div>
-        <div class="c"></div>
+      <div class="info_container">
+        <div class="info_map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3253.84717306742!2d139.5331860513068!3d35.35943888017386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018455b8315c7f5%3A0xcbdd8242e75aeff7!2z44CSMjQ3LTAwMDYg56We5aWI5bed55yM5qiq5rWc5biC5qCE5Yy656yg6ZaT77yT5LiB55uu77yS4oiS77yY!5e0!3m2!1sja!2sjp!4v1610771848950!5m2!1sja!2sjp"  frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+        <div class="info_text">
+          <div class="info_text_innner">
+            <table>
+              <tbody>
+                <tr>
+                  <th>店舗名</th>
+                  <td>シャトレーゼ大船店</td>
+                </tr>
+                <tr>
+                  <th>住所</th>
+                  <td>〒247-0006<br>神奈川県横浜市栄区笠間3-2-8</td>
+                </tr>
+                <tr>
+                  <th>TEL</th>
+                  <td>045-892-0320</td>
+                </tr>
+                <tr>
+                  <th>営業時間</th>
+                  <td>9:00～20:00</td>
+                </tr>
+              </tbody>
+            </table>
+            <a href="https://goo.gl/maps/t7exV3MiaNDxhmjv8" target="_blank">
+              <div class="map-btn">
+                <button type="button" class="btn btn-outline-original" onfocus="this.blur();"><span> >> </span>Google Map</button>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
     <?php get_footer(); ?>

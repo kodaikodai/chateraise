@@ -74,7 +74,9 @@ if(isset($_SESSION['cart'])){
           </div>
         </div>
       </div>
-      <div class="link_shop"><button type="button" class="btn btn-outline-original" onfocus="this.blur();">お買い物を続ける</button></div>
+      <a href="<?php echo esc_url( home_url( '/#shopping' ) )?>">
+        <div class="link_shop"><button type="button" class="btn btn-outline-original" onfocus="this.blur();">お買い物を続ける</button></div>
+      </a>
     </div>
     <?php endif; ?>
   </div>
