@@ -127,11 +127,11 @@
                 </tr>
               </tbody>
             </table>
-            <a href="https://goo.gl/maps/t7exV3MiaNDxhmjv8" target="_blank">
-              <div class="map-btn">
+            <div class="map-btn">
+              <a href="https://goo.gl/maps/t7exV3MiaNDxhmjv8" target="_blank">
                 <button type="button" class="btn btn-outline-original" onfocus="this.blur();"><span> >> </span>Google Map</button>
-              </div>
-            </a>
+              </a>
+            </div>
           </div>
         </div>
       </div>
