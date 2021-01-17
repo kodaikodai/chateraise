@@ -44,7 +44,7 @@ if(isset($_SESSION['cart'])){
               <span>数量：</span>
               <input type="hidden" name="action" value="change">
               <input type="hidden" name="item_id" value="<?php echo $key;?>">
-              <input type="number" name="num" value="<?php echo $val['num'];?>"  min="1" >
+              <input type="number" name="num" value="<?php echo $val['num'];?>"  min="1" class="number">
               <input type="submit" value="変更">
             </div>
             <div>
