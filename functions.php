@@ -343,3 +343,32 @@ function custom_column_content( $value, $column_name, $term_id){
   }
 }
 add_action( "manage_category_custom_column", 'custom_column_content', 10, 3);
+
+// ajax通信 商品検索
+function my_wp_ajax() {
+  $nonce = $_REQUEST['nonce'];
+  $input = $_POST['keyword'];
+  if ( wp_verify_nonce( $nonce, 'my-ajax-nonce' ) ) {
+    $query = "SELECT id
+    FROM wp_posts
+    WHERE post_type='post'
+    AND post_status='publish'
+    AND (post_content LIKE '%$input%' OR post_title LIKE '%$input%')";
+    global $wpdb;
+    $rows = $wpdb->get_results($query);
+    $data = [];
+    foreach($rows as $row) {
+      $data[]= [
+        'title'=> get_post($row->id)->post_title,
+        'permalink'=> get_permalink( $row->id ),
+        'thumbnail' => get_the_post_thumbnail($row->id),
+        // get_the_post_thumbnail_url(2218);こっちでも良いかも
+        'price'=> get_post_meta($row->id, 'item_price', true),
+      ];
+    }
+    echo json_encode($data);
+  }
+  die();
+}
+add_action( 'wp_ajax_my_ajax', 'my_wp_ajax' );
+add_action( 'wp_ajax_nopriv_my_ajax', 'my_wp_ajax' );
