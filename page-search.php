@@ -27,9 +27,7 @@
           );
           $categories = get_categories( $args );
           foreach( $categories as $category ){
-            echo '
-            <input type="checkbox" name="" value=""><sapn>' . $category->name . '</span>
-            ';
+            echo '<div><input type="checkbox" name="checkbox" id="checkbox" value="' . $category->name . '"><sapn>' . $category->name . '</span></div>';
           }
         ?>
       </div>
@@ -116,8 +114,13 @@ $('#search_btn').click(function(){
   console.log("hey");
   let ajaxUrl = '<?php echo esc_url( admin_url( 'admin-ajax.php', __FILE__ ) ); ?>';
   let input = $("#keyword").val();
-
-  if(input.length === 0){
+  const cat_val = [];
+  $('input:checkbox[name="checkbox"]:checked').each(function() {
+			cat_val.push($(this).val());
+	});
+console.log(cat_val);
+console.log(input);
+  if(input.length === 0 && cat_val.length === 0){
     $(".d").empty();
     $(".e").empty();
   } else {
@@ -127,11 +130,12 @@ $('#search_btn').click(function(){
     data: {
       'action' : 'my_ajax',
       'keyword': input,
+      'category': cat_val,
       'nonce': '<?php echo wp_create_nonce( 'my-ajax-nonce' ); ?>'
     },
     dataType: 'json',
     success: function( response ) {
-      // console.log(response);
+      console.log(response);
       $(".d").empty();
       $(".e").empty();
         if (response.length !== 0){

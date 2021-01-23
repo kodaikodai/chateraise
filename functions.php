@@ -348,12 +348,38 @@ add_action( "manage_category_custom_column", 'custom_column_content', 10, 3);
 function my_wp_ajax() {
   $nonce = $_REQUEST['nonce'];
   $input = $_POST['keyword'];
+  $category = $_POST['category'];
+  $categories='"'.implode('","',$category).'"';
   if ( wp_verify_nonce( $nonce, 'my-ajax-nonce' ) ) {
-    $query = "SELECT id
-    FROM wp_posts
-    WHERE post_type='post'
-    AND post_status='publish'
-    AND (post_content LIKE '%$input%' OR post_title LIKE '%$input%')";
+    if(empty($input)) {
+      // ①inputのみ空
+      $query = "SELECT wp_posts.id
+                from wp_terms
+                inner join wp_term_relationships
+                on wp_terms.term_id=wp_term_relationships.term_taxonomy_id
+                inner join wp_posts
+                on wp_posts.id = wp_term_relationships.object_id
+                where wp_terms.name in ($categories)";
+    } elseif(empty($category)) {
+      // ②categoryのみ空
+      $query = "SELECT id
+                FROM wp_posts
+                WHERE post_type='post'
+                AND post_status='publish'
+                AND (post_content LIKE '%$input%' OR post_title LIKE '%$input%')";
+    } else {
+      // ③どちらも空ではない
+      $query = "SELECT wp_posts.id
+                from wp_terms
+                inner join wp_term_relationships
+                on wp_terms.term_id=wp_term_relationships.term_taxonomy_id
+                inner join wp_posts
+                on wp_posts.id = wp_term_relationships.object_id
+                where wp_terms.name in ($categories)
+                and wp_posts.post_type='post'
+                AND wp_posts.post_status='publish'
+                AND (wp_posts.post_content LIKE '%$input%' OR wp_posts.post_title LIKE '%$input%')";
+    }
     global $wpdb;
     $rows = $wpdb->get_results($query);
     $data = [];
