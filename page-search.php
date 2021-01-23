@@ -162,7 +162,6 @@ $('#keyword').keypress(function(e){
   }
 });
 
-
 $('#keyword').keypress(function(e){
   if(e.which === 13){
     $('#search_btn').click();
