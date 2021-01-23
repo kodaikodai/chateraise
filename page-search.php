@@ -35,35 +35,26 @@
     </form>
   </div>
   <div class="e"></div>
-  <div class="d">
-  <?php
-  // $query = "SELECT id
-  // FROM wp_posts
-  // WHERE post_type='post'
-  // AND post_status='publish'
-  // AND (post_content LIKE '%ケーキ%' OR post_title LIKE '%ケーキ%')";
-  // global $wpdb;
-  // $rows = $wpdb->get_results($query);
-  // foreach($rows as $row) {
-  //   $result[] = $row->id;
-  // }
-  // var_dump($result);
-  // echo get_post_meta(2243, 'item_price', true);
-  ?>
-  </div>
+  <div class="item_frame"></div>
 </div>
 <script>
   // ajaxデータを受け取りビューに表示させる
   function appendPost(item){
-    var html = `<div>
-                  <hr>
-                  <a href="${item['permalink']}" target="_blank">
-                    <p>写真：${item['thumbnail']}</p>
-                    <p>商品名：${item['title']}</p>
-                    <p>値段：${item['price']}</p>
-                  </a>
-                </div>`
-    $(".d").append(html)
+    var html = `
+                  <div class="item">
+                    <a href="${item['permalink']}" target="_blank">
+                      <div class="item_img">${item['thumbnail']}</div>
+                      <div class="item_name">
+                        <p>${item['title']}</p>
+                        <p>
+                          ${item['price']}円（税込${item['price'] * 1.08}円）
+                        </p>
+                      </div>
+                      <span class="arrow"></span>
+                    </a>
+                  </div>
+                `
+    $(".item_frame").append(html);
     }
 
     function appendNum(n){
@@ -75,40 +66,8 @@
 
     function appendErrMsgToHTML(msg){
       var html = `<div>${msg}</div>`
-      $(".d").append(html);
+      $(".item_frame").append(html);
     }
-
-// $("#keyword").on("keyup", function(){
-//   let ajaxUrl = '<?php echo esc_url( admin_url( 'admin-ajax.php', __FILE__ ) ); ?>';
-//   let input = $("#keyword").val();
-
-//   if(input.length === 0){
-//     $(".d").empty();
-//   } else {
-//     $.ajax({
-//     type: 'POST',
-//     url: ajaxUrl,
-//     data: {
-//       'action' : 'my_ajax',
-//       'keyword': input,
-//       'nonce': '<?php echo wp_create_nonce( 'my-ajax-nonce' ); ?>'
-//     },
-//     dataType: 'json',
-//     success: function( response ) {
-//       // console.log(response);
-//       $(".d").empty();
-//         if (response.length !== 0){
-//           response.forEach(function(item){
-//             appendPost(item);
-//           })
-//         }
-//         else{
-//           appendErrMsgToHTML("一致する投稿がありません")
-//         }
-//     }
-//   });
-//   }
-// });
 
 $('#search_btn').click(function(){
   console.log("hey");
@@ -121,7 +80,7 @@ $('#search_btn').click(function(){
 console.log(cat_val);
 console.log(input);
   if(input.length === 0 && cat_val.length === 0){
-    $(".d").empty();
+    $(".item_frame").empty();
     $(".e").empty();
   } else {
     $.ajax({
@@ -136,7 +95,7 @@ console.log(input);
     dataType: 'json',
     success: function( response ) {
       console.log(response);
-      $(".d").empty();
+      $(".item_frame").empty();
       $(".e").empty();
         if (response.length !== 0){
           let n=0;
@@ -145,6 +104,16 @@ console.log(input);
             n+=1;
           })
           appendNum(n);
+          // カテゴリー商品表示
+          $(function(){
+            let $item_frame = $('.item_frame'),
+            emptyCells = [],
+            i;
+          for (i = 0; i < $item_frame.find('.item').length; i++) {
+            emptyCells.push($('<div>', { class: 'item is-empty' }));
+          }
+          $item_frame.append(emptyCells);
+          });
         }
         else{
           appendErrMsgToHTML("一致する商品がありません")
@@ -157,7 +126,6 @@ console.log(input);
 // エンターキーのsubmitを停止
 $('#keyword').keypress(function(e){
   if(e.which === 13){
-    console.log("oo");
     return false;
   }
 });
