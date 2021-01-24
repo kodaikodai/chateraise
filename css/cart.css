@@ -69,6 +69,22 @@
   padding: 30px;
 }
 
+.cart-num input[name="num"]{
+  width: 100px;
+  padding: 3px;
+  text-align: center;
+  border-radius: 3px;
+  border: 1.5px solid #c0c0c0;
+  margin: 0 3px;
+  margin-bottom: 1rem;
+}
+
+.cart_info form input[type="submit"]{
+  border-width: 0px;
+  border-bottom: solid 3px #627295;
+  padding: 3px 8px;
+}
+
 /* -------------------- タブレット md ~992px -------------------- */
 @media screen and (max-width: 992px) {
 
@@ -130,6 +146,19 @@
   .detail_total{
     font-size: 18px;
     margin: 0 0 40px;
+  }
+
+.cart_info {
+  padding-left: 5vw;
+}
+
+.cart_info p{
+  margin-bottom: 5px;
+}
+
+  .cart-num input[name="num"]{
+    width: 60px;
+    margin: 0px 0px 5px;
   }
 
 }

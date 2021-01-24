@@ -40,12 +40,12 @@ if(isset($_SESSION['cart'])){
               <p>単価：<?php echo $val['price']* 1.08;?>円</p>
               <input type="hidden" name="price" value="<?php echo $val['price'];?>">
             </div>
-            <div>
+            <div class="cart-num">
               <span>数量：</span>
               <input type="hidden" name="action" value="change">
               <input type="hidden" name="item_id" value="<?php echo $key;?>">
               <input type="number" name="num" value="<?php echo $val['num'];?>"  min="1" class="number">
-              <input type="submit" value="変更">
+              <input type="submit" value="変更" class="btn btn-square-shadow" onfocus="this.blur();">
             </div>
             <div>
               <p>小計：<?php echo $val['price'] * $val['num'] * 1.08;?>円</p>
@@ -54,7 +54,7 @@ if(isset($_SESSION['cart'])){
           <form action="" method="POST">
             <input type="hidden" name="action" value="delete">
             <input type="hidden" name="item_id" value="<?php echo $key;?>">
-            <input type="submit" value="削除">
+            <input type="submit" value="削除" class="btn btn-square-shadow">
           </form>
         </div>
       </div>
