@@ -1,14 +1,17 @@
 <?php get_header(); ?>
-<div class="a">
-  <div class="b">
+<div class="search_wrap">
+  <div class="items_wrap">
     <h1>商品検索</h1>
   </div>
-  <div class="c">
-    <form class="task_form">
-      <p>キーワード</p>
-      <input type="text" name="keyword" placeholder="検索" id="keyword" autocomplete="off">
+  <div class="search_detail">
+    <form>
       <hr>
-      <p>カテゴリー</p>
+      <p><b>キーワード</b></p>
+      <div class="input">
+        <input type="text" name="keyword" placeholder="キーワードを入力してください" id="keyword" autocomplete="off">
+      </div>
+      <hr>
+      <p><b>カテゴリー</b></p>
       <div class="category-search">
         <?php
           $args = array(
@@ -27,11 +30,13 @@
           );
           $categories = get_categories( $args );
           foreach( $categories as $category ){
-            echo '<div><input type="checkbox" name="checkbox" id="checkbox" value="' . $category->name . '"><sapn>' . $category->name . '</span></div>';
+            echo '<div class="cat_name"><label><input class="option-input05" type="checkbox" name="checkbox" id="checkbox" value="' . $category->name . '"><sapn>' . $category->name . '</span></label></div>';
           }
         ?>
       </div>
-      <button id="search_btn" type="button" >検索</button>
+      <div class="btn-area">
+        <button id="search_btn" type="button" class="btn btn-square-shadow" onfocus="this.blur();">検索</button>
+      </div>
     </form>
   </div>
   <div class="e"></div>

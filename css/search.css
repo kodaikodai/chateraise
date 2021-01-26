@@ -1,0 +1,118 @@
+.search_title h1{
+  text-align: center;
+  color: #551937;
+  margin: 50px;
+}
+
+.search_detail{
+  padding: 0 50px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.search_detail p{
+  text-align: center;
+}
+
+.input{
+  text-align: center;
+  margin: 30px 0px 30px;
+}
+
+.input input{
+  width: 70%;
+  min-width: 200px;
+  text-align: center;
+}
+
+.cat_name{
+  display: inline-block;
+  margin: 0 18px 35px 0;
+  width: 282px;
+  font-size: 16px;
+}
+
+.option-input05 {
+	position: relative;
+	margin: 0 1rem 0 0;
+	cursor: pointer;
+}
+.option-input05:before {
+	position: absolute;
+	z-index: 1;
+	top: 0.125rem;
+	left: 0.1875rem;
+	width: 0.75rem;
+	height: 0.375rem;
+	content: '';
+	-webkit-transition: -webkit-transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+	        transition:         transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+	-webkit-transform: rotate(-45deg) scale(0, 0);
+	        transform: rotate(-45deg) scale(0, 0);
+	border: 2px solid #da3c41;
+	border-top-style: none;
+	border-right-style: none;
+}
+.option-input05:checked:before {
+	-webkit-transform: rotate(-45deg) scale(1, 1);
+	        transform: rotate(-45deg) scale(1, 1);
+}
+.option-input05:after {
+	position: absolute;
+	top: -0.125rem;
+	left: 0;
+	width: 1rem;
+	height: 1rem;
+	content: '';
+	cursor: pointer;
+	border: 2px solid #c0c0c0;
+	background: #ffffff;
+}
+
+.category-search{
+  margin: 30px 0px 30px;
+}
+
+.btn-area{
+  padding: 30px 0 30px;
+  text-align: center;
+}
+
+.btn-area button{
+  width: 400px;
+  padding: 10px 0px;
+}
+
+
+/* -------------------- タブレット md ~992px -------------------- */
+@media screen and (max-width: 992px) {
+
+}
+
+/* -------------------- スマホ sm ~768px -------------------- */
+@media screen and (max-width: 768px) {
+
+  .btn-area button{
+    width: 100%;
+  }
+
+  .cat_name {
+    margin: 0 10px 35px 0;
+    width: 228.5px;
+  }
+
+}
+
+/* -------------------- スマホ小 ~576px -------------------- */
+@media screen and (max-width: 576px) {
+
+  .cat_name {
+    margin: 0 10px 25px 0;
+    width: calc((100% - 20px)/2);
+  }
+
+  .search_detail {
+    padding: 0 20px;
+}
+
+}

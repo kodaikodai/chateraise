@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/category.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/single.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/cart.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/search.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <!-- Optional JavaScript -->
