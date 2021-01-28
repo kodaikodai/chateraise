@@ -349,7 +349,9 @@ function my_wp_ajax() {
   $nonce = $_REQUEST['nonce'];
   $input = $_POST['keyword'];
   $category = $_POST['category'];
-  $categories='"'.implode('","',$category).'"';
+  if(!empty($category)){
+    $categories='"'.implode('","',$category).'"';
+  }
   if ( wp_verify_nonce( $nonce, 'my-ajax-nonce' ) ) {
     if(empty($input)) {
       // ①inputのみ空
