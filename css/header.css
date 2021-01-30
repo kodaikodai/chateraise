@@ -22,6 +22,14 @@ body {
   border-radius: 3rem;
 }
 
+i.fas{
+  font-size: 1.2rem;
+}
+
+.search-text{
+  padding-left: 0.2rem;
+}
+
 /* -------------------- タブレット md ~992px -------------------- */
 @media screen and (max-width: 992px) {
 
@@ -52,4 +60,13 @@ body {
   .navbar{
     padding: 10px 15px !important;
   }
+
+  .nav-item .pr-4 {
+    padding-right: 0px !important;
+  }
+
+  .search-text{
+    display: none;
+  }
+
 }

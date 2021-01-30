@@ -50,7 +50,8 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?php echo get_page_link(2235)?>" class="nav-link pr-4">商品検索</a>
+            <a href="<?php echo get_page_link(2235)?>" class="nav-link pr-4">
+              <i class="fas fa-search"></i><span class="search-text">商品検索</span></a>
           </li>
         </ul>
       </nav>
