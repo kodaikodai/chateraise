@@ -125,6 +125,10 @@ console.log(input);
         }
     }
   });
+  $("#keyword").val('');
+  $('input:checkbox[name="checkbox"]').each(function(){
+    this.checked = false;
+  })
   }
 });
 
