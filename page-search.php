@@ -52,7 +52,7 @@
                       <div class="item_name">
                         <p>${item['title']}</p>
                         <p>
-                          ${item['price']}円（税込${item['price'] * 1.08}円）
+                          ${item['price']}円（税込）
                         </p>
                       </div>
                       <span class="arrow"></span>

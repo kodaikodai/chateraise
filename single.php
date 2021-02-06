@@ -11,7 +11,7 @@
       <div>
         <p>
           <?php if(get_post_meta($post->ID, 'item_price', true)): ?>
-            <?php echo get_post_meta($post->ID, 'item_price', true);?>円（税込 <?php echo get_post_meta($post->ID, 'item_price', true) * 1.08;?>円）
+            <?php echo get_post_meta($post->ID, 'item_price', true);?>円（税込）
           <?php endif;?>
         </p>
         <p class='sentence'><?php the_content(); ?></p>

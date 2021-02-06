@@ -37,7 +37,7 @@ if(isset($_SESSION['cart'])){
           </div>
           <form action="" method="POST">
             <div>
-              <p>単価：<?php echo $val['price']* 1.08;?>円</p>
+              <p>単価：<?php echo $val['price'];?>円（税込）</p>
               <input type="hidden" name="price" value="<?php echo $val['price'];?>">
             </div>
             <div class="cart-num">
@@ -48,7 +48,7 @@ if(isset($_SESSION['cart'])){
               <input type="submit" value="変更" class="btn btn-square-shadow" onfocus="this.blur();">
             </div>
             <div>
-              <p>小計：<?php echo $val['price'] * $val['num'] * 1.08;?>円</p>
+              <p>小計：<?php echo $val['price'] * $val['num'];?>円（税込）</p>
             </div>
           </form>
           <form action="" method="POST">
@@ -58,7 +58,7 @@ if(isset($_SESSION['cart'])){
           </form>
         </div>
       </div>
-      <?php $total_price += $val['price'] * $val['num']* 1.08;
+      <?php $total_price += $val['price'] * $val['num'];
       endforeach;?>
       <hr>
     </div>
