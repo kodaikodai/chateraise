@@ -63,14 +63,16 @@
     }
 
     function appendNum(n){
-    var html = `<div>
-                  <div>${n}件ヒット</div>
+    var html = `<div class="search_results">
+                  <p>${n}件の検索結果がございます。</p>
                 </div>`
     $(".e").append(html)
     }
 
     function appendErrMsgToHTML(msg){
-      var html = `<div>${msg}</div>`
+      var html = `<div class="search_results">
+                    <p>${msg}</p>
+                  </div>`
       $(".item_frame").append(html);
     }
 

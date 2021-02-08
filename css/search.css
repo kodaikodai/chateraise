@@ -26,7 +26,7 @@
 
 .cat_name{
   display: inline-block;
-  margin: 0 18px 35px 0;
+  margin: 0 18px 30px 0;
   width: 282px;
   font-size: 16px;
 }
@@ -69,7 +69,7 @@
 }
 
 .category-search{
-  margin: 30px 0px 30px;
+  margin-top: 30px;
 }
 
 .btn-area{
@@ -82,6 +82,15 @@
   padding: 10px 0px;
 }
 
+.search_results{
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.search_wrap .item_frame{
+  margin-bottom: 50px;
+}
 
 /* -------------------- タブレット md ~992px -------------------- */
 @media screen and (max-width: 992px) {
@@ -96,7 +105,7 @@
   }
 
   .cat_name {
-    margin: 0 10px 35px 0;
+    margin: 0 10px 30px 0;
     width: 228.5px;
   }
 
