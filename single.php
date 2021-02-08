@@ -9,7 +9,7 @@
         <?php the_title(); ?>
       </h1>
       <div>
-        <p>
+        <p class="item_price">
           <?php if(get_post_meta($post->ID, 'item_price', true)): ?>
             <?php echo get_post_meta($post->ID, 'item_price', true);?>円（税込）
           <?php endif;?>

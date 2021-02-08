@@ -116,6 +116,10 @@
   margin-top: 5px;
   color: red;
 }
+
+.item_price{
+  margin-bottom: 25px;
+}
 /* -------------------- タブレット md ~992px -------------------- */
 @media screen and (max-width: 992px) {
   .item_wrap_img {
