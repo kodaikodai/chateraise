@@ -121,7 +121,7 @@ function add_item_fields() {
 	//add_meta_box(表示される入力ボックスのHTMLのID, ラベル, 表示する内容を作成する関数名, 投稿タイプ, 表示方法)
 	//第4引数のpostをpageに変更すれば固定ページにオリジナルカスタムフィールドが表示されます(custom_post_typeのslugを指定することも可能)。
 	//第5引数はnormalの他にsideとadvancedがあります。
-	add_meta_box( 'item-info', '商品の情報', 'insert_item_fields', 'post', 'normal');
+	add_meta_box( 'item-info', '商品の基本情報', 'insert_item_fields', 'post', 'normal');
 }
 add_action('admin_menu', 'add_item_fields');
 
@@ -130,9 +130,18 @@ function insert_item_fields() {
   global $post;
 
 	//【管理画面】新規投稿画面に表示される入力エリアを作ります。「get_post_meta()」は現在入力されている値を表示するための記述です。
-	echo '税抜き価格（半角数字）： <input type="text" name="item_price" value="'.get_post_meta($post->ID, 'item_price', true).'" size="10" />円<br>';
-  echo 'アレルギー表示： <input type="text" name="item_allergies" value="'.get_post_meta($post->ID, 'item_allergies', true).'" size="50" placeholder="例 : 小麦、卵"/><br>';
-
+	echo '<b>税込価格（半角数字）</b>： <input type="text" name="item_price" value="'.get_post_meta($post->ID, 'item_price', true).'" size="10" style="margin-bottom:5px;"/>円<br>';
+  echo '<b>アレルギー表示</b>： <input type="text" name="item_allergies" value="'.get_post_meta($post->ID, 'item_allergies', true).'" size="50" placeholder="例 : 小麦、卵" style="margin-bottom:5px;"/><br>';
+  echo '<b>日持ち</b>： <input type="text" name="item_expire" value="'.get_post_meta($post->ID, 'item_expire', true).'" size="50" placeholder="" style="margin-bottom:10px;"/><br>';
+  echo '
+<table>
+  <tr><th>栄養成分（半角数字）</th></tr>
+  <tr><td>エネルギー</td><td>：<input type="text" name="item_cal" value="'.get_post_meta($post->ID, 'item_cal', true).'" size="10" placeholder="" />kcal</td></tr>
+  <tr><td>たんぱく質</td><td>：<input type="text" name="item_protein" value="'.get_post_meta($post->ID, 'item_protein', true).'" size="10" placeholder="" />g</td></tr>
+  <tr><td>脂質</td><td>：<input type="text" name="item_fat" value="'.get_post_meta($post->ID, 'item_fat', true).'" size="10" placeholder="" />g</td></tr>
+  <tr><td>炭水化物</td><td>：<input type="text" name="item_carb" value="'.get_post_meta($post->ID, 'item_carb', true).'" size="10" placeholder="" />g</td></tr>
+  <tr><td>食塩相当量</td><td>：<input type="text" name="item_salt" value="'.get_post_meta($post->ID, 'item_salt', true).'" size="10" placeholder="" />g</td></tr>
+</table>';
 }
  
  
@@ -150,10 +159,40 @@ function save_item_fields( $post_id ) {
 		delete_post_meta($post_id, 'item_allergies');
   }
   
-  if(!empty($_POST['item_allergies'])){
-		update_post_meta($post_id, 'item_allergies', $_POST['item_allergies'] );
+  if(!empty($_POST['item_expire'])){
+		update_post_meta($post_id, 'item_expire', $_POST['item_expire'] );
 	}else{
-		delete_post_meta($post_id, 'item_allergies');
+		delete_post_meta($post_id, 'item_expire');
+  }
+  
+  if(!empty($_POST['item_cal'])){
+		update_post_meta($post_id, 'item_cal', $_POST['item_cal'] );
+	}else{
+		delete_post_meta($post_id, 'item_cal');
+  }
+  
+  if(!empty($_POST['item_protein'])){
+		update_post_meta($post_id, 'item_protein', $_POST['item_protein'] );
+	}else{
+		delete_post_meta($post_id, 'item_protein');
+  }
+  
+  if(!empty($_POST['item_fat'])){
+		update_post_meta($post_id, 'item_fat', $_POST['item_fat'] );
+	}else{
+		delete_post_meta($post_id, 'item_fat');
+  }
+  
+  if(!empty($_POST['item_carb'])){
+		update_post_meta($post_id, 'item_carb', $_POST['item_carb'] );
+	}else{
+		delete_post_meta($post_id, 'item_carb');
+  }
+  
+  if(!empty($_POST['item_salt'])){
+		update_post_meta($post_id, 'item_salt', $_POST['item_salt'] );
+	}else{
+		delete_post_meta($post_id, 'item_salt');
 	}
 
 }

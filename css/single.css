@@ -44,7 +44,7 @@
 }
 
 .add_cart input{
-  width: 400px;
+  width: 100%;
   padding: 10px 0px;
 }
 
@@ -66,7 +66,56 @@
   border-bottom: none;
 }
 
+.item_detail li,.nutrition-facts li,.item_detail li{
+  font-size: 0.9rem;
+}
 
+.sentence{
+  margin-bottom: 2rem;
+}
+
+.item_detail{
+  margin-bottom: 50px;
+}
+
+
+.item_detail p{
+  margin-bottom: 10px;
+}
+
+.item_detail li{
+  padding: 10px 0;
+  border-top: 1px solid #ede9ea;
+  border-bottom: 1px solid #ede9ea;
+}
+
+.item_detail .allergies{
+  text-align: center;
+}
+
+.nutrition-facts li{
+  padding: 10px 0;
+  border-top: 1px solid #ede9ea;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nutrition-facts li:last-child{
+  border-bottom: 1px solid #ede9ea;
+}
+
+.annotation{
+  padding-left: 20px;
+  list-style: initial;
+  font-size: 0.7rem;
+  margin-bottom: 50px;
+}
+
+.add_cart p{
+  font-size: 0.8rem;
+  margin-top: 5px;
+  color: red;
+}
 /* -------------------- タブレット md ~992px -------------------- */
 @media screen and (max-width: 992px) {
   .item_wrap_img {
@@ -93,10 +142,6 @@
   .item_wrap_innner {
     width: 100%;
     padding: 10px 0px;
-  }
-
-  .add_cart input{
-    width: 100%;
   }
 
 }

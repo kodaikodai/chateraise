@@ -4,7 +4,10 @@ Author: sagawa
 Version: 1.0
 Description: test
 */
-
+ul{
+  list-style: none;
+  padding: initial;
+}
 
 footer{
   height: 50px;
