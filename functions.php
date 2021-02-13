@@ -144,7 +144,54 @@ function insert_item_fields() {
 </table>';
 }
  
- 
+function add_close_time_fields() {
+	add_meta_box( 'close_time', '商品の非公開時間設定', 'close_time_fields', 'post', 'normal');
+}
+add_action('admin_menu', 'add_close_time_fields');
+
+function close_time_fields(){
+  global $post;
+  var_dump(get_post_meta($post->ID,'close_label',true));
+  var_dump(get_post_meta($post->ID, 'close_time_date', true));
+  var_dump(get_post_meta($post->ID, 'close_time_time', true));
+  var_dump(get_post_meta($post->ID, 'close_time_date', true).' '.get_post_meta($post->ID, 'close_time_time', true));
+  var_dump(strtotime(get_post_meta($post->ID, 'close_time_date', true).' '.get_post_meta($post->ID, 'close_time_time', true) . ' JST'));
+  var_dump(date_i18n('Y-m-d H:i:s'));
+  if( get_post_meta($post->ID,'close_label',true) === "close-on" ) {
+		$label_check_on = "checked";
+	} else {
+    $label_check_off = "checked";
+    $display = "display:none;";
+  }
+  echo '
+  <input type="radio" name="close_label" value="close-off" id="off" '.$label_check_off.'>設定しない<br>
+  <input type="radio" name="close_label" value="close-on" id="on" '.$label_check_on.' >設定する<input type="date" name="close_time_date" id="close_time_date" value="'.get_post_meta($post->ID, 'close_time_date', true).'" style="'.$display.'"><input type="time" name="close_time_time" id="close_time_time" value="'.get_post_meta($post->ID, 'close_time_time', true).'" style="'.$display.'">';
+}
+
+function admin_func() {
+?>
+<script>
+jQuery(function($){
+  $('[name="close_label"]:radio').change( function() {
+    if($('[id=on]').prop('checked')){
+      console.log("a");
+      $('#close_time_date').fadeIn();
+      $('#close_time_time').fadeIn();
+    } else {
+      $('#close_time_date').fadeOut();
+      $('#close_time_time').fadeOut();
+    }
+  });
+  $('.components-button,.editor-post-publish-button,.editor-post-publish-button__button').click(function(){
+    console.log('aaaaaaaa');
+  });
+});
+</script>
+<?php
+}
+add_action('admin_head-post-new.php', 'admin_func');
+add_action('admin_head-post.php', 'admin_func');
+
 // カスタムフィールドの値を保存
 function save_item_fields( $post_id ) {
 	if(!empty($_POST['item_price'])){ //価格が入力されている場合
@@ -193,8 +240,26 @@ function save_item_fields( $post_id ) {
 		update_post_meta($post_id, 'item_salt', $_POST['item_salt'] );
 	}else{
 		delete_post_meta($post_id, 'item_salt');
-	}
+  }
+  
+  if(!empty($_POST['close_label'])){
+    update_post_meta($post_id, 'close_label', $_POST['close_label'] );
+	}else{
+    delete_post_meta($post_id, 'close_label');
+  }
+  
+  if(!empty($_POST['close_time_date'])){
+		update_post_meta($post_id, 'close_time_date', $_POST['close_time_date'] );
+	}else{
+		delete_post_meta($post_id, 'close_time_date');
+  }
 
+  if(!empty($_POST['close_time_time'])){
+		update_post_meta($post_id, 'close_time_time', $_POST['close_time_time'] );
+	}else{
+		delete_post_meta($post_id, 'close_time_time');
+  }
+  
 }
 add_action('save_post', 'save_item_fields');
 
@@ -439,3 +504,29 @@ function my_wp_ajax() {
 }
 add_action( 'wp_ajax_my_ajax', 'my_wp_ajax' );
 add_action( 'wp_ajax_nopriv_my_ajax', 'my_wp_ajax' );
+
+// 商品の非公開時間の予約
+function my_expire_event($pid) {
+  if (get_post_meta($pid, 'close_time_date', true) != '' && get_post_meta($pid, 'close_time_time', true) != '' 
+  && date_i18n('Y-m-d H:i:s') < get_post_meta($pid, 'close_time_date', true).' '.get_post_meta($pid, 'close_time_time', true)) {
+     // 設定されていて未来の日付ならスケジュールをセット
+
+
+  // すでに予定の設定があれば削除する
+  $stamp = wp_next_scheduled( 'my_new_event', array( $pid ) );
+	if ( false !== $stamp ) {
+		wp_clear_scheduled_hook( 'my_new_event', array( $pid ) );
+  }
+  
+     $time_stamp = strtotime(get_post_meta($pid, 'close_time_date', true).' '.get_post_meta($pid, 'close_time_time', true) . ' JST');
+     wp_schedule_single_event($time_stamp, 'my_new_event', array($pid));
+  }
+}
+add_action('save_post','my_expire_event');
+
+// スケジュールされる動作を記述
+function my_update_post($pid) {
+  wp_update_post(array( 'ID' => $pid, 'post_status' => 'private' ) );
+}
+add_action('my_new_event', 'my_update_post');
+
