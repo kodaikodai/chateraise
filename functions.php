@@ -151,12 +151,12 @@ add_action('admin_menu', 'add_close_time_fields');
 
 function close_time_fields(){
   global $post;
-  var_dump(get_post_meta($post->ID,'close_label',true));
-  var_dump(get_post_meta($post->ID, 'close_time_date', true));
-  var_dump(get_post_meta($post->ID, 'close_time_time', true));
-  var_dump(get_post_meta($post->ID, 'close_time_date', true).' '.get_post_meta($post->ID, 'close_time_time', true));
-  var_dump(strtotime(get_post_meta($post->ID, 'close_time_date', true).' '.get_post_meta($post->ID, 'close_time_time', true) . ' JST'));
-  var_dump(date_i18n('Y-m-d H:i:s'));
+  // var_dump(get_post_meta($post->ID,'close_label',true));
+  // var_dump(get_post_meta($post->ID, 'close_time_date', true));
+  // var_dump(get_post_meta($post->ID, 'close_time_time', true));
+  // var_dump(get_post_meta($post->ID, 'close_time_date', true).' '.get_post_meta($post->ID, 'close_time_time', true));
+  // var_dump(strtotime(get_post_meta($post->ID, 'close_time_date', true).' '.get_post_meta($post->ID, 'close_time_time', true) . ' JST'));
+  // var_dump(date_i18n('Y-m-d H:i:s'));
   if( get_post_meta($post->ID,'close_label',true) === "close-on" ) {
 		$label_check_on = "checked";
 	} else {
@@ -165,7 +165,10 @@ function close_time_fields(){
   }
   echo '
   <input type="radio" name="close_label" value="close-off" id="off" '.$label_check_off.'>設定しない<br>
-  <input type="radio" name="close_label" value="close-on" id="on" '.$label_check_on.' >設定する<input type="date" name="close_time_date" id="close_time_date" value="'.get_post_meta($post->ID, 'close_time_date', true).'" style="'.$display.'"><input type="time" name="close_time_time" id="close_time_time" value="'.get_post_meta($post->ID, 'close_time_time', true).'" style="'.$display.'">';
+  <input type="radio" name="close_label" value="close-on" id="on" '.$label_check_on.' >設定する
+  <input type="date" name="close_time_date" id="close_time_date" value="'.get_post_meta($post->ID, 'close_time_date', true).'" style="'.$display.'" placeholder="例: 2021-02-22">
+  <input type="time" name="close_time_time" id="close_time_time" value="'.get_post_meta($post->ID, 'close_time_time', true).'" style="'.$display.'" placeholder="例: 09:20">
+  ';
 }
 
 function admin_func() {
@@ -174,7 +177,6 @@ function admin_func() {
 jQuery(function($){
   $('[name="close_label"]:radio').change( function() {
     if($('[id=on]').prop('checked')){
-      console.log("a");
       $('#close_time_date').fadeIn();
       $('#close_time_time').fadeIn();
     } else {
@@ -183,9 +185,6 @@ jQuery(function($){
       $('#close_time_date').val('');
       $('#close_time_time').val('');
     }
-  });
-  $('.components-button,.editor-post-publish-button,.editor-post-publish-button__button').click(function(){
-    console.log('aaaaaaaa');
   });
 });
 </script>
@@ -514,7 +513,7 @@ function my_expire_event($pid) {
   if (get_post_meta($pid, 'close_label', true) === "close-on" && get_post_meta($pid, 'close_time_date', true) != '' && get_post_meta($pid, 'close_time_time', true) != '' 
   && date_i18n('Y-m-d H:i:s') < get_post_meta($pid, 'close_time_date', true).' '.get_post_meta($pid, 'close_time_time', true)) {
 
-    // すでに予定の設定があれば削除する
+    // すでに予定の設定があれば削除してから新規で登録する
     $stamp = wp_next_scheduled( 'my_new_event', array( $pid ) );
     if ( false !== $stamp ) {
       wp_clear_scheduled_hook( 'my_new_event', array( $pid ) );
