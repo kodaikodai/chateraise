@@ -511,7 +511,7 @@ add_action( 'wp_ajax_nopriv_my_ajax', 'my_wp_ajax' );
 function my_expire_event($pid) {
 
   // 「設定する」を選択し日時が設定されていて未来の日付ならスケジュールをセット
-  if ( get_post_meta($pid, 'close_time_date', true) != '' && get_post_meta($pid, 'close_time_time', true) != '' 
+  if (get_post_meta($pid, 'close_label', true) === "close-on" && get_post_meta($pid, 'close_time_date', true) != '' && get_post_meta($pid, 'close_time_time', true) != '' 
   && date_i18n('Y-m-d H:i:s') < get_post_meta($pid, 'close_time_date', true).' '.get_post_meta($pid, 'close_time_time', true)) {
 
     // すでに予定の設定があれば削除する
@@ -524,7 +524,7 @@ function my_expire_event($pid) {
   }
 
   // 「設定しない」を選択した時
-  if (get_post_meta($pid, 'close_label', true) === 'close_off') {
+  if (get_post_meta($pid, 'close_label', true) === "close-off") {
     // すでに予定の設定があれば削除する
     $stamp = wp_next_scheduled( 'my_new_event', array( $pid ) );
 	  if ( false !== $stamp ) {
