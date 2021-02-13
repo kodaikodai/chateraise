@@ -540,3 +540,22 @@ function my_update_post($pid) {
 }
 add_action('my_new_event', 'my_update_post');
 
+
+function add_my_ajaxurl() {
+  ?>
+      <script>
+          var ajaxurl = '<?php echo admin_url( 'admin-ajax.php'); ?>';
+      </script>
+  <?php
+}
+add_action( 'wp_head', 'add_my_ajaxurl', 1 );
+
+function add_my_nonce() {
+  ?>
+      <script>
+          var nonce = '<?php echo wp_create_nonce( 'my-ajax-nonce' ); ?>';
+      </script>
+  <?php
+}
+add_action( 'wp_head', 'add_my_nonce' );
+
