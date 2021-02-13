@@ -180,6 +180,8 @@ jQuery(function($){
     } else {
       $('#close_time_date').fadeOut();
       $('#close_time_time').fadeOut();
+      $('#close_time_date').val('');
+      $('#close_time_time').val('');
     }
   });
   $('.components-button,.editor-post-publish-button,.editor-post-publish-button__button').click(function(){
@@ -507,19 +509,27 @@ add_action( 'wp_ajax_nopriv_my_ajax', 'my_wp_ajax' );
 
 // 商品の非公開時間の予約
 function my_expire_event($pid) {
-  if (get_post_meta($pid, 'close_time_date', true) != '' && get_post_meta($pid, 'close_time_time', true) != '' 
+
+  // 「設定する」を選択し日時が設定されていて未来の日付ならスケジュールをセット
+  if (get_post_meta($pid, 'close_label', true) === 'close_on' && get_post_meta($pid, 'close_time_date', true) != '' && get_post_meta($pid, 'close_time_time', true) != '' 
   && date_i18n('Y-m-d H:i:s') < get_post_meta($pid, 'close_time_date', true).' '.get_post_meta($pid, 'close_time_time', true)) {
-     // 設定されていて未来の日付ならスケジュールをセット
 
-
-  // すでに予定の設定があれば削除する
-  $stamp = wp_next_scheduled( 'my_new_event', array( $pid ) );
-	if ( false !== $stamp ) {
-		wp_clear_scheduled_hook( 'my_new_event', array( $pid ) );
+    // すでに予定の設定があれば削除する
+    $stamp = wp_next_scheduled( 'my_new_event', array( $pid ) );
+    if ( false !== $stamp ) {
+      wp_clear_scheduled_hook( 'my_new_event', array( $pid ) );
+    }
+    $time_stamp = strtotime(get_post_meta($pid, 'close_time_date', true).' '.get_post_meta($pid, 'close_time_time', true) . ' JST');
+    wp_schedule_single_event($time_stamp, 'my_new_event', array($pid));
   }
-  
-     $time_stamp = strtotime(get_post_meta($pid, 'close_time_date', true).' '.get_post_meta($pid, 'close_time_time', true) . ' JST');
-     wp_schedule_single_event($time_stamp, 'my_new_event', array($pid));
+
+  // 「設定しない」を選択した時
+  if (get_post_meta($pid, 'close_label', true) === 'close_off') {
+    // すでに予定の設定があれば削除する
+    $stamp = wp_next_scheduled( 'my_new_event', array( $pid ) );
+	  if ( false !== $stamp ) {
+		  wp_clear_scheduled_hook( 'my_new_event', array( $pid ) );
+    }
   }
 }
 add_action('save_post','my_expire_event');
