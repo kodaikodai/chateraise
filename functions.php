@@ -95,21 +95,22 @@ add_action( 'admin_menu', 'Change_menulabel' );
 add_theme_support( 'post-thumbnails', array( 'post' ) );
 set_post_thumbnail_size( 200, 200, true );
 
-//管理画面のサムネイルカラム追加
+//管理画面のカラム追加
 function customize_manage_posts_columns($columns) {
+  $columns['close_time'] = "公開期限";
   $columns['thumbnail'] = __('Thumbnail');
   return $columns;
 }
 add_filter( 'manage_posts_columns', 'customize_manage_posts_columns' );
 
-//管理画面のサムネイル画像表示
+//管理画面のカラム表示
 function customize_manage_posts_custom_column($column_name, $post_id) {
-  if ( 'thumbnail' == $column_name) {
+  if ( 'thumbnail' === $column_name) {
       $thum = get_the_post_thumbnail($post_id, 'small', array( 'style'=>'width:100px;height:auto;' ));
-  } if ( isset($thum) && $thum ) {
-      echo $thum;
-  } else {
-      echo __('None');
+      echo ($thum)? $thum : '—';
+  } elseif( 'close_time' === $column_name) {
+      $close_time = get_post_meta($post_id, 'close_time_date', true).' '.get_post_meta($post_id, 'close_time_time', true);
+      echo ($close_time !== ' ')? '設定済み<br>'.$close_time: '—';
   }
 }
 add_action( 'manage_posts_custom_column', 'customize_manage_posts_custom_column', 10, 2 );
