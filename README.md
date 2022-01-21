@@ -1,4 +1,6 @@
-![Image from Gyazo](https://user-images.githubusercontent.com/57389471/73822346-381d4700-4839-11ea-9ac7-8a90e0a88d5b.gif)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/57389471/150487592-8887e25c-6a22-47e9-ba02-e78aed63e591.png" width=50%>
+</p>
 
 <p align="center">
   <a href="https://www.ruby-lang.org/ja/"><img src="https://user-images.githubusercontent.com/57389471/73752345-276ec180-47a4-11ea-8fe1-caf19e125eeb.png" height="45px;" /></a>
