@@ -1,15 +1,12 @@
 <p align="center">
   <img src="https://user-images.githubusercontent.com/57389471/150487592-8887e25c-6a22-47e9-ba02-e78aed63e591.png" width=50%>
 </p>
-
 <p align="center">
-  <a href="https://www.ruby-lang.org/ja/"><img src="https://user-images.githubusercontent.com/57389471/73752345-276ec180-47a4-11ea-8fe1-caf19e125eeb.png" height="45px;" /></a>
-  <a href="https://rubyonrails.org/"><img src="https://user-images.githubusercontent.com/57389471/73752059-9697e600-47a3-11ea-89c1-47465384c4fb.png" height="40px;" /></a>
-  <a href="http://haml.info/"><img src="https://user-images.githubusercontent.com/57389471/73752833-fba00b80-47a4-11ea-96d7-54c5e6808403.png" height="55px;" /></a>
-  <a href="https://sass-lang.com/"><img src="https://user-images.githubusercontent.com/57389471/73752910-1a060700-47a5-11ea-90e4-0c95d7e3e4ed.png" height="55px;" /></a>
-  <a href="https://jquery.com/"><img src="https://user-images.githubusercontent.com/57389471/73754740-38213680-47a8-11ea-8dc7-9a7dfa30c992.png" height="50px;" /></a>
-  <a href="https://www.mysql.com/jp/"><img src="https://user-images.githubusercontent.com/57389471/73753087-6e10eb80-47a5-11ea-8a91-47f816398fcb.png" height="60px;" /></a>
-  <a href="https://jp.heroku.com/home"><img src="https://user-images.githubusercontent.com/57389471/73817254-d4d9e780-482d-11ea-9a93-0ac206dabfe9.png" height="50px;" /></a>
+  <a href="#"><img src="https://user-images.githubusercontent.com/57389471/150488800-c0bc6161-2bc7-4a83-b9f0-cd2d1a729f1e.png" height="125px;" /></a>
+  <a href="#"><img src="https://user-images.githubusercontent.com/57389471/77995441-c0662700-7366-11ea-87aa-19152a8ffb22.jpg" height="125px;" /></a>
+  <a href="#"><img src="https://user-images.githubusercontent.com/57389471/77995418-b8a68280-7366-11ea-9c68-15faa7874990.jpg" height="125px;" /></a>
+  <a href="#"><img src="https://user-images.githubusercontent.com/57389471/150488480-f0a399bc-7d7b-432a-b845-7ec86403d434.png" height="125px;" /></a>
+  <a href="#"><img src="https://user-images.githubusercontent.com/57389471/73754740-38213680-47a8-11ea-8dc7-9a7dfa30c992.png" height="125px;" /></a> 
 </p>
 
 ## このアプリについて
