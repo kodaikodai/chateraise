@@ -1,5 +1,3 @@
-<h2 align="center"><a href="https://change-life.herokuapp.com/">あなたの人生を変えた"モノ"</a></h2>
-
 ![Image from Gyazo](https://user-images.githubusercontent.com/57389471/73822346-381d4700-4839-11ea-9ac7-8a90e0a88d5b.gif)
 
 <p align="center">
