@@ -9,41 +9,41 @@
   <a href="#"><img src="https://user-images.githubusercontent.com/57389471/73754740-38213680-47a8-11ea-8dc7-9a7dfa30c992.png" height="125px;" /></a> 
 </p>
 
-## このアプリについて
-買って良かったもの、生活を豊かにしたもの、仕事の生産性が高まったものなどを投稿し共有する写真投稿アプリです。
-ユーザー同士がモノを通じて交流したり、人生が豊かになるヒントを得られたり、
-ユーザー同士のQOL（Quality of Life）を向上させることができるようなアプリケーションを目指しています。
 
-## 制作に至った経緯
-最近はミニマリストという言葉が流行ったり、昔に比べモノを所有しなくなったと言われています。
-幸せの価値観も、お金を稼ぎ多くのモノを消費する時代から、
-充実した体験や経験を味わう事により幸せの価値を感じる時代に移り変わっていると感じています。
-私もなるべく少ないものでより生活が豊かになりたいと考えているので、
-時代のニーズがあり、私自身もあったらいいなという思いから、
-モノから人生が豊かになるヒントを得られるようなこのアプリを制作いたしました。
+## このサイトについて
+お菓子の製造・販売を行う店舗にてネット注文を行うECサイトを作成いたしました。
 
 ## URL
-https://change-life.herokuapp.com<br>
-テスト用アカウント↓↓
-- Email&nbsp;:&nbsp;test1@test.<span>com</span>
-- Password&nbsp;:&nbsp;testtest
+http://testmywsite.wp.xdomain.jp/wp-login.php<br>
+テスト用アカウント
+- ユーザー名 : test
+- パスワード : &xn8@$sozLtNkAW10(WE*J1!
 
-## 機能の説明と工夫したところ
-### トップページ
-- サイト全体でレスポンシブ対応しています。
-- 写真をクリックする事で投稿の詳細を表示できます。
-- 最新の投稿が左上になるようにしています。
-- ページネーション機能を実装しています。
-[![Image from Gyazo](https://i.gyazo.com/f5d95147d77805230ac2fae2f784f889.jpg)](https://gyazo.com/f5d95147d77805230ac2fae2f784f889)
-### ログイン機能
-- deviseを用いて実装しました
-[![Image from Gyazo](https://i.gyazo.com/7e7f690d8310f7a9b9679443f2bb0786.png)](https://gyazo.com/7e7f690d8310f7a9b9679443f2bb0786)
-### 投稿機能
-- ヘッダーの投稿ボタンから新規投稿ができます。
-- ログインしているユーザーのみが投稿できるように制限しています。
-- 直感的に操作できるようにjQueryを用いて写真をファイルから直接選択しプレビュー表示するようにしています。
-- 写真投稿アプリのため、写真を選択しないと投稿できないようにバリデーションを設定しています。
-[![Image from Gyazo](https://i.gyazo.com/790589ea76ccf6981ccd377c2d9a5d71.jpg)](https://gyazo.com/790589ea76ccf6981ccd377c2d9a5d71)
+## 実装内容/機能説明
+### カスタム投稿タイプ「お知らせ」を追加
+- 管理画面からトップページに表示する「お知らせ」を投稿できるように実装いたしました。
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/57389471/150620445-b768fe25-92b2-4cef-ac3c-9c27aff85e43.png" width=70%>
+</p>
+
+### 商品の新規投稿画面にカスタムフィールドを作成
+- 商品情報に共通する項目を商品追加ページで登録できるように実装いたしました。
+<p align="center" style="display:flex;">
+  <img src="https://user-images.githubusercontent.com/57389471/150620866-7adb0e44-4c5e-42f1-b0d3-95389890dfcd.png" width=49%>
+  <img src="https://user-images.githubusercontent.com/57389471/150620865-aec70c57-33ec-485c-b4cd-8aab7b720e40.png" width=49%>
+</p>
+
+### 指定した日時に商品が自動的に非公開になる機能をカスタムフィールドとして実装いたしました。
+<p align="center" style="display:flex;">
+  <img src="https://user-images.githubusercontent.com/57389471/150621299-d7e7c9e0-99d6-4652-b03d-3cf8ea896534.png" width=70%>
+</p>
+
+### 商品カテゴリーに画像を設定できるように実装いたしました。
+<p align="center" style="display:flex;">
+  <img src="https://user-images.githubusercontent.com/57389471/150621815-d31fa7e0-1b2d-415d-ad7e-e07518652e1a.png" width=30%>
+  <img src="https://user-images.githubusercontent.com/57389471/150621819-1dd624ca-5d62-48b9-b26d-2efbb7fe3c0e.png" width=69%>
+</p>
+
 ### コメント投稿機能
 - 投稿の詳細画面からコメントが投稿できます。
 - ユーザー同士がコミュニケーションが取れるようにコメント機能を実装しています。
